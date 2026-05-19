@@ -1,0 +1,52 @@
+@import "tailwindcss";
+
+@theme {
+  /* Merk-kleuren (CLAUDE.md §2) */
+  --color-canvas: #f3f3f3;
+  --color-volt: #b9ff66;
+  --color-volt-dark: #a5e55c;
+  --color-onyx: #191a23;
+  --color-onyx-soft: #0f1018;
+  --color-line: #e5e5e5;
+  --color-muted: #888888;
+
+  /* Typografie */
+  --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo,
+    monospace;
+
+  /* Letter-spacing scale (CLAUDE.md §2 - Typografie) */
+  --tracking-tightest: -0.04em;
+  --tracking-tighter: -0.03em;
+  --tracking-tight: -0.02em;
+
+  /* Layout */
+  --container-content: 1200px;
+  --container-bleed: 1400px;
+}
+
+html {
+  background-color: var(--color-canvas);
+  color: var(--color-onyx);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

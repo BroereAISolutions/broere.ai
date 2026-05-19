@@ -1,0 +1,218 @@
+---
+const cycleWords = ["AI", "Apps", "Automations", "APIs", "Agents"];
+---
+
+<section class="relative overflow-hidden">
+  <div class="mx-auto w-full max-w-[1200px] px-6 lg:px-10 pt-12 pb-24 lg:pt-20 lg:pb-32">
+    <div class="grid items-start gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-16">
+      <div>
+        <div
+          class="inline-flex items-center gap-2.5 text-[15px] font-medium tracking-[-0.01em] text-onyx/65"
+        >
+          <span class="relative flex h-2 w-2" aria-hidden="true">
+            <span
+              class="absolute inline-flex h-full w-full animate-ping rounded-full bg-volt opacity-75"
+            ></span>
+            <span class="relative inline-flex h-2 w-2 rounded-full bg-volt"></span>
+          </span>
+          Jouw partner in:
+        </div>
+
+        <h1
+          class="mt-8 font-bold tracking-[-0.04em] text-onyx hero-title"
+        >
+          <span class="block">Broere</span>
+          <span class="block cycler-line">
+            <span class="sr-only">{cycleWords.join(", ")}.</span>
+            <span class="cycler" aria-hidden="true" data-cycler>
+              <span class="cycler__measure">
+                {cycleWords.map((word) => <span data-measure>{word}</span>)}
+              </span>
+              <span class="cycler__window">
+                <span class="cycler__items">
+                  {cycleWords.map((word) => <span>{word}</span>)}
+                  <span>{cycleWords[0]}</span>
+                </span>
+              </span>
+            </span>
+          </span>
+          <span class="block">Solutions</span>
+        </h1>
+
+        <p class="mt-8 max-w-xl text-[17px] leading-[1.6] text-onyx/70">
+          Mini SaaS-tools, automatiseringen en maatwerk software die je business
+          concreet vooruit helpen. Geen hype, gewoon quick wins die werken.
+        </p>
+
+        <div class="mt-10 flex flex-wrap items-center gap-3">
+          <a
+            href="contact"
+            class="inline-flex items-center gap-3 rounded-lg bg-onyx px-5 py-3.5 text-[15px] font-semibold text-white shadow-[0_6px_16px_rgba(25,26,35,0.14)] transition-all hover:-translate-y-0.5 hover:shadow-[0_10px_24px_rgba(25,26,35,0.2)]"
+          >
+            Plan een gesprek
+            <span
+              class="inline-flex h-6 w-6 items-center justify-center rounded-full bg-volt text-onyx"
+              aria-hidden="true"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="12"
+                height="12"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="3"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <line x1="7" y1="17" x2="17" y2="7"></line>
+                <polyline points="7 7 17 7 17 17"></polyline>
+              </svg>
+            </span>
+          </a>
+
+          <a
+            href="projecten"
+            class="inline-flex items-center gap-2 rounded-lg border border-onyx/15 bg-transparent px-5 py-3.5 text-[15px] font-semibold text-onyx transition-all hover:border-onyx/35 hover:-translate-y-0.5"
+          >
+            Bekijk projecten
+          </a>
+        </div>
+      </div>
+
+      <div
+        class="relative lg:mt-12 xl:mr-[calc(540px-50vw)]"
+      >
+        <img
+          src="/images/hero-dashboard.png"
+          alt="Screenshot van een maatwerk dashboard"
+          width="1600"
+          height="1000"
+          loading="eager"
+          decoding="async"
+          class="w-full h-auto drop-shadow-[0_24px_48px_rgba(25,26,35,0.18)]"
+        />
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero-title {
+    font-size: clamp(3rem, 9vw, 5.5rem);
+    line-height: 0.95;
+  }
+
+  .cycler-line {
+    line-height: 1.2;
+  }
+
+  .cycler {
+    position: relative;
+    display: inline-block;
+    background-color: var(--color-volt);
+    color: var(--color-onyx);
+    padding: 0 0.18em;
+    border-radius: 0.12em;
+    overflow: hidden;
+    line-height: 1.2;
+    vertical-align: top;
+    height: 1lh;
+    width: var(--word-w-0, max-content);
+    will-change: width;
+    animation: cycle-width 12s infinite cubic-bezier(0.7, 0, 0.3, 1);
+  }
+
+  .cycler__measure {
+    position: absolute;
+    visibility: hidden;
+    pointer-events: none;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    overflow: visible;
+  }
+
+  .cycler__measure > [data-measure] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: inline-block;
+    white-space: nowrap;
+    line-height: inherit;
+  }
+
+  .cycler__window {
+    position: absolute;
+    inset: 0;
+    padding: 0 0.18em;
+    overflow: hidden;
+    display: block;
+  }
+
+  .cycler__items {
+    display: flex;
+    flex-direction: column;
+    will-change: transform;
+    animation: cycle-slide 12s infinite cubic-bezier(0.7, 0, 0.3, 1);
+  }
+
+  .cycler__items > span {
+    display: block;
+    height: 1lh;
+    line-height: 1.2;
+    white-space: nowrap;
+  }
+
+  @keyframes cycle-slide {
+    0%, 16%   { transform: translateY(0); }
+    20%, 36%  { transform: translateY(-1lh); }
+    40%, 56%  { transform: translateY(-2lh); }
+    60%, 76%  { transform: translateY(-3lh); }
+    80%, 96%  { transform: translateY(-4lh); }
+    100%      { transform: translateY(-5lh); }
+  }
+
+  @keyframes cycle-width {
+    0%, 16%   { width: var(--word-w-0); }
+    20%, 36%  { width: var(--word-w-1); }
+    40%, 56%  { width: var(--word-w-2); }
+    60%, 76%  { width: var(--word-w-3); }
+    80%, 96%  { width: var(--word-w-4); }
+    100%      { width: var(--word-w-0); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .cycler,
+    .cycler__items {
+      animation: none;
+    }
+  }
+</style>
+
+<script>
+  const measureCycler = (cycler: HTMLElement) => {
+    const cs = getComputedStyle(cycler);
+    const padX =
+      parseFloat(cs.paddingLeft || "0") + parseFloat(cs.paddingRight || "0");
+    const measures = cycler.querySelectorAll<HTMLElement>("[data-measure]");
+    measures.forEach((el, i) => {
+      const breathing = 4;
+      const w = Math.ceil(el.getBoundingClientRect().width) + padX + breathing;
+      cycler.style.setProperty(`--word-w-${i}`, `${w}px`);
+    });
+  };
+
+  const initCyclers = () => {
+    document
+      .querySelectorAll<HTMLElement>("[data-cycler]")
+      .forEach(measureCycler);
+  };
+
+  initCyclers();
+  window.addEventListener("resize", initCyclers, { passive: true });
+  if (document.fonts) {
+    document.fonts.ready.then(initCyclers);
+  }
+</script>

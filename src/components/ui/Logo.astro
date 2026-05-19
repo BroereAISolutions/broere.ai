@@ -1,0 +1,33 @@
+---
+interface Props {
+  variant?: "light" | "dark";
+  size?: "sm" | "md" | "lg";
+  class?: string;
+}
+
+const { variant = "light", size = "md", class: className = "" } = Astro.props;
+
+const sizeClasses: Record<NonNullable<Props["size"]>, string> = {
+  sm: "text-xl",
+  md: "text-2xl",
+  lg: "text-4xl",
+};
+
+const dotSize: Record<NonNullable<Props["size"]>, string> = {
+  sm: "w-1.5 h-1.5",
+  md: "w-2 h-2",
+  lg: "w-2.5 h-2.5",
+};
+
+const textColor = variant === "dark" ? "text-white" : "text-onyx";
+---
+
+<span
+  class={`inline-flex items-center gap-1.5 font-sans font-bold lowercase ${sizeClasses[size]} ${textColor} ${className}`}
+  style="letter-spacing: -0.05em;"
+  aria-label="Broere AI Solutions"
+>
+  <span>broere</span>
+  <span class={`inline-block rounded-full bg-volt ${dotSize[size]}`} aria-hidden="true"></span>
+  <span>ai</span>
+</span>

@@ -1,0 +1,93 @@
+---
+type ImageLogo = {
+  type?: "image";
+  src: string;
+  alt: string;
+  height?: number;
+};
+
+type TextLogo = {
+  type: "text";
+  label: string;
+};
+
+type Logo = ImageLogo | TextLogo;
+
+const logos: Logo[] = [
+  {
+    src: "/images/logos/MoveBuddy_Groen.png",
+    alt: "MoveBuddy",
+    height: 22,
+  },
+  {
+    src: "/images/logos/68b98eceae1749cc20bbb1d4_Captain-logo.svg",
+    alt: "Captain",
+    height: 30,
+  },
+  {
+    src: "/images/logos/homerun-logo1631016175full-width.png",
+    alt: "Bambelo",
+    height: 38,
+  },
+  {
+    type: "text",
+    label: "fietsenrekhuren.com",
+  },
+];
+---
+
+<section class="bg-white">
+  <div class="mx-auto w-full max-w-[1200px] px-6 lg:px-10 pt-6 pb-10 lg:pt-8 lg:pb-14">
+    <p
+      class="text-center text-[15px] font-medium tracking-[-0.01em] text-onyx/55"
+    >
+      Onze partners:
+    </p>
+
+    {
+      logos.length > 0 ? (
+        <ul
+          class="mt-5 grid grid-cols-2 items-center justify-items-center gap-x-6 gap-y-6 sm:grid-cols-4 sm:gap-x-8"
+        >
+          {logos.map((logo) =>
+            logo.type === "text" ? (
+              <li class="flex items-center">
+                <span
+                  class="text-[20px] font-semibold tracking-tight text-onyx/55 transition-colors duration-300 hover:text-onyx/80"
+                >
+                  {logo.label}
+                </span>
+              </li>
+            ) : (
+              <li class="flex items-center">
+                <img
+                  src={logo.src}
+                  alt={logo.alt}
+                  loading="lazy"
+                  decoding="async"
+                  class="client-logo w-auto opacity-70 transition-all duration-300 hover:opacity-100"
+                  style={`height: ${logo.height ?? 32}px;`}
+                />
+              </li>
+            ),
+          )}
+        </ul>
+      ) : (
+        <p class="mt-6 text-center text-sm text-onyx/45">
+          Voeg logo-bestanden toe in <code class="font-mono">/public/images/logos/</code> en
+          registreer ze in <code class="font-mono">Clients.astro</code>.
+        </p>
+      )
+    }
+  </div>
+</section>
+
+<style>
+  .client-logo {
+    mix-blend-mode: multiply;
+    filter: grayscale(100%) brightness(0.35) contrast(1.4);
+  }
+  .client-logo:hover {
+    filter: grayscale(100%) brightness(0) contrast(1.6);
+  }
+</style>

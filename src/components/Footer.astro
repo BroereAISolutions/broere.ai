@@ -1,0 +1,73 @@
+---
+import Logo from "./ui/Logo.astro";
+
+const sections = [
+  {
+    title: "Site",
+    links: [
+      { href: "diensten", label: "Diensten" },
+      { href: "projecten", label: "Projecten" },
+      { href: "over", label: "Over" },
+      { href: "contact", label: "Contact" },
+    ],
+  },
+  {
+    title: "Contact",
+    links: [
+      { href: "mailto:bas@broere.ai", label: "bas@broere.ai" },
+      { href: "https://linkedin.com", label: "LinkedIn", external: true },
+      { href: "https://github.com", label: "GitHub", external: true },
+    ],
+  },
+];
+
+const year = new Date().getFullYear();
+---
+
+<footer class="mt-auto bg-onyx text-white">
+  <div class="mx-auto w-full max-w-[1200px] px-6 lg:px-10 pt-16 pb-10 lg:pt-20 lg:pb-12">
+    <div class="grid gap-12 lg:grid-cols-[1.4fr_1fr_1fr] lg:gap-16">
+      <div class="space-y-4">
+        <Logo variant="dark" size="lg" />
+        <p class="max-w-sm text-[15px] leading-relaxed text-white/65">
+          Mini SaaS-tools, automatiseringen en maatwerk software voor MKB.
+          Geen hype, gewoon quick wins die werken.
+        </p>
+      </div>
+
+      {
+        sections.map((section) => (
+          <div>
+            <p class="font-mono text-[11px] uppercase tracking-[0.18em] text-white/45">
+              {section.title}
+            </p>
+            <ul class="mt-4 space-y-3">
+              {section.links.map((link) => (
+                <li>
+                  <a
+                    href={link.href}
+                    class="text-[15px] text-white/85 hover:text-volt transition-colors"
+                    {...("external" in link && link.external
+                      ? { target: "_blank", rel: "noopener noreferrer" }
+                      : {})}
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
+    </div>
+
+    <div class="mt-16 flex flex-col gap-4 border-t border-white/10 pt-8 sm:flex-row sm:items-center sm:justify-between">
+      <p class="font-mono text-[11px] uppercase tracking-[0.18em] text-white/45">
+        © {year} Broere AI Solutions · KvK / BTW volgt
+      </p>
+      <p class="font-mono text-[11px] uppercase tracking-[0.18em] text-white/45">
+        Gebouwd in Nederland
+      </p>
+    </div>
+  </div>
+</footer>

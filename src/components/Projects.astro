@@ -1,0 +1,125 @@
+---
+type Project = {
+  year: string;
+  category: string;
+  title: string;
+  href: string;
+  image?: string;
+};
+
+const defaultCardBg = "/images/0fee03df-bb3f-4e63-af21-cedff5427e99.png";
+
+const projects: Project[] = [
+  {
+    year: "2026",
+    category: "Maatwerk SaaS",
+    title: "Crew planning & uren tool",
+    href: "/projecten/crew-planning",
+  },
+  {
+    year: "2026",
+    category: "Web app",
+    title: "Evenementen tekentool",
+    href: "/projecten/tekentool",
+    image: "/images/tekentool.png",
+  },
+  {
+    year: "2025",
+    category: "Maatwerk SaaS",
+    title: "Feedback platform",
+    href: "/projecten/feedback",
+  },
+];
+---
+
+<section class="projects-section relative text-onyx">
+  <div class="absolute inset-0 -z-10 projects-bg" aria-hidden="true"></div>
+  <div class="mx-auto w-full max-w-[1200px] px-6 lg:px-10 py-20 lg:py-28">
+    <div class="flex items-end justify-between gap-8">
+      <h2 class="font-bold tracking-[-0.03em] text-onyx section-title">
+        Projecten
+      </h2>
+      <p class="hidden lg:block text-[15px] text-onyx/55 max-w-xs text-right">
+        Mini SaaS-tools die concreet werk uit handen nemen.
+      </p>
+    </div>
+
+    <ul class="mt-12 lg:mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-7">
+      {
+        projects.map((project) => (
+          <li>
+            <a
+              href={project.href}
+              class="group relative flex aspect-[4/5] flex-col overflow-hidden rounded-2xl transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_18px_40px_rgba(25,26,35,0.18)]"
+            >
+              <div
+                class="absolute inset-0 -z-10 bg-cover bg-center transition-transform duration-700 group-hover:scale-[1.04]"
+                style={`background-image: url('${project.image ?? defaultCardBg}');`}
+              />
+              <div
+                class="absolute inset-0 -z-10 bg-gradient-to-b from-black/20 via-black/10 to-black/55"
+                aria-hidden="true"
+              />
+
+              <div class="flex items-center justify-between px-6 pt-6 text-[11px] font-medium tracking-tight text-white/70">
+                <span>{project.year}</span>
+                <span>{project.category}</span>
+              </div>
+
+              <div class="mt-auto flex items-end justify-between gap-3 px-6 pb-6">
+                <h3
+                  class="font-bold tracking-[-0.025em] leading-[1.05] text-white project-title"
+                >
+                  {project.title}
+                </h3>
+                <span
+                  class="flex h-10 w-10 flex-none items-center justify-center rounded-full bg-volt text-onyx transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                  aria-hidden="true"
+                >
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <line x1="7" y1="17" x2="17" y2="7" />
+                    <polyline points="7 7 17 7 17 17" />
+                  </svg>
+                </span>
+              </div>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
+
+<style>
+  .section-title {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    line-height: 1;
+  }
+
+  .project-title {
+    font-size: clamp(1.375rem, 2vw, 1.75rem);
+  }
+
+  .projects-section {
+    isolation: isolate;
+  }
+
+  .projects-bg {
+    background-color: #ECECEC;
+    background-image:
+      linear-gradient(to right, rgba(25, 26, 35, 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(25, 26, 35, 0.05) 1px, transparent 1px),
+      radial-gradient(ellipse 65% 45% at 85% -10%, rgba(185, 255, 102, 0.35), transparent 65%),
+      radial-gradient(ellipse 45% 35% at 0% 110%, rgba(185, 255, 102, 0.18), transparent 65%);
+    background-size: 64px 64px, 64px 64px, 100% 100%, 100% 100%;
+  }
+</style>

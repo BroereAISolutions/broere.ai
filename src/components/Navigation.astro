@@ -1,0 +1,102 @@
+---
+import Logo from "./ui/Logo.astro";
+
+const navLinks = [
+  { href: "diensten", label: "Diensten" },
+  { href: "projecten", label: "Projecten" },
+  { href: "over", label: "Over" },
+  { href: "contact", label: "Contact" },
+];
+---
+
+<header class="sticky top-0 z-50 bg-canvas/85 backdrop-blur-md border-b border-transparent transition-colors duration-200" data-nav>
+  <div class="mx-auto w-full max-w-[1200px] px-6 lg:px-10">
+    <div class="flex h-16 lg:h-20 items-center justify-between gap-6">
+      <a href="/" class="flex items-center" aria-label="Naar de homepagina">
+        <Logo size="md" />
+      </a>
+
+      <nav class="hidden md:block" aria-label="Hoofdnavigatie">
+        <ul class="flex items-center gap-8">
+          {
+            navLinks.map((link) => (
+              <li>
+                <a
+                  href={link.href}
+                  class="text-[15px] font-medium text-onyx/75 hover:text-onyx transition-colors"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+
+      <div class="flex items-center gap-3">
+        <a
+          href="#contact"
+          class="hidden sm:inline-flex items-center gap-2 rounded-lg bg-onyx px-4 py-2.5 text-[14px] font-semibold text-white shadow-[0_4px_12px_rgba(25,26,35,0.12)] transition-all hover:-translate-y-0.5 hover:shadow-[0_6px_16px_rgba(25,26,35,0.18)]"
+        >
+          Plan een gesprek
+          <span
+            class="inline-flex h-5 w-5 items-center justify-center rounded-full bg-volt text-onyx"
+            aria-hidden="true"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="10"
+              height="10"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="3"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <line x1="7" y1="17" x2="17" y2="7"></line>
+              <polyline points="7 7 17 7 17 17"></polyline>
+            </svg>
+          </span>
+        </a>
+
+        <button
+          type="button"
+          class="md:hidden inline-flex h-10 w-10 items-center justify-center rounded-lg border border-line text-onyx"
+          aria-label="Menu openen"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <line x1="4" y1="7" x2="20" y2="7"></line>
+            <line x1="4" y1="12" x2="20" y2="12"></line>
+            <line x1="4" y1="17" x2="20" y2="17"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<script>
+  const nav = document.querySelector<HTMLElement>("[data-nav]");
+  if (nav) {
+    const onScroll = () => {
+      if (window.scrollY > 8) {
+        nav.classList.add("border-line");
+      } else {
+        nav.classList.remove("border-line");
+      }
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+  }
+</script>
