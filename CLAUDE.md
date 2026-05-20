@@ -408,8 +408,65 @@ De homepage is opgebouwd uit 6 secties:
 
 **Aanvullende dependencies:**
 - Tailwind CSS voor styling (config met merk-kleuren als design tokens)
-- Astro Content Collections voor blog en cases
+- Astro Content Collections voor projecten (en later blog) — zie §5.3
 - View Transitions voor smooth page transitions
+
+### Project-content beheren (Content Collections)
+
+Projecten worden beheerd via **Astro Content Collections** met de v5 content layer. Eén markdown-bestand per project; foto's in een eigen subfolder onder `public/images/projecten/`. Geen aparte admin-UI, alles git-based.
+
+**Schema** staat in `src/content.config.ts` (collection `projecten`). De belangrijkste velden:
+
+| Veld | Type | Verplicht | Wat |
+|---|---|---|---|
+| `title` | string | ✅ | Projectnaam |
+| `year` | number | ✅ | Jaar (4 cijfers) |
+| `category` | string | ✅ | Bv. "Maatwerk SaaS", "Web app", "Automation" |
+| `excerpt` | string | ✅ | Korte impact-zin, **groot en prominent** in de hero (geen subtitle) en als meta-description |
+| `problem` | string | ✅ | Probleemstelling. Gerenderd als linker kolom van de problem/solution sectie. Gebruik YAML `>` voor lange teksten |
+| `solution` | string | ✅ | Oplossing. Gerenderd als rechter kolom van de problem/solution sectie |
+| `coverImage` | string | ✅ | Path naar hoofdscreenshot, bv. `/images/projecten/[slug]/cover.png` (full-bleed, **geen browser-frame**) |
+| `coverAlt` | string | – | Alt-text voor de cover (optioneel) |
+| `stack` | string[] | – | Tech tags, bv. `["Next.js", "Supabase"]` |
+| `client` | string | – | Opdrachtgever / "Intern project" |
+| `role` | string | – | Eigen rol (bv. "Concept, design, development") |
+| `url` | url | – | Live link, zet een "Bekijk live"-knop op de detailpagina |
+| `order` | number | – | Sorteer-volgorde op homepage (lager = eerder, default 0) |
+| `draft` | boolean | – | `true` = niet publiceren |
+| `publishedAt` | date | – | Optioneel publicatie-datum |
+| `gallery` | `{src, alt?, caption?}[]` | – | Extra screenshots onder de body |
+| `metrics` | `{label, value}[]` | – | Cijfers in card-grid (bv. "Uren bespaard / week" → "~6") |
+
+**Nieuw project toevoegen — stappenplan:**
+
+1. Maak `public/images/projecten/[slug]/` en drop daar je foto's in (cover + eventuele gallery shots). Slug = url-vriendelijke naam, bv. `klant-portal`.
+2. Maak `src/content/projecten/[slug].md` met frontmatter (zie schema hierboven) en de body in Markdown.
+3. De body gebruikt standaard markdown: `##` voor sub-koppen, `**vet**`, `- lijstjes`, etc. De prose-styling op de detailpagina rendert dit volgens de huisstijl (lime-bullets, lime-underline links, etc.).
+4. Run `npm run dev` (of `npm run build`) — het project verschijnt automatisch op de homepage én op `/projecten/[slug]`.
+
+**Bestaande projecten:**
+
+- `src/content/projecten/crew-planning.md` — Crew planning & uren tool
+- `src/content/projecten/tekentool.md` — Evenementen tekentool
+- `src/content/projecten/feedback.md` — Feedback platform
+
+**Detailpagina-template:** `src/pages/projecten/[slug].astro` genereert statisch via `getStaticPaths()`. De pagina is **donker** (Onyx-achtergrond, witte tekst) als bewust contrast met de lichte homepage. Layout volgt een editorial-spread:
+
+1. **Hero (donker, met subtiele vertical guides als background):**
+   - Terug-link
+   - Monospace metadata-bar (jaar · categorie · client)
+   - **Enorme titel** linksboven, multi-line, `clamp(3rem, 9vw, 7rem)`, font-weight 600, max ~14ch
+   - **Grote excerpt** rechts-onder in de hero (`clamp(1.5rem, 3.4vw, 2.75rem)`), max ~18ch, tracking-tight. Géén "subtitle", maar een impact-zin
+   - Subtiele crosshair-icoon-decoratie naast de excerpt
+   - Stack-chips onder de excerpt, optionele "Bekijk live"-knop (volt)
+2. **Cover-image:** full-bleed, rounded, **geen browser-frame**. Decoratieve sparkle-ster rechtsonder.
+3. **Problem / Solution:** 2-koloms grid, lowercase muted labels (`problem`, `solution`) in `text-white/35`, body in `text-white/85`.
+4. **Markdown body** (Hoe het werkt, Wat het oplevert, of vrij in te vullen) gerenderd via `prose-dark` styling: lime bullets, lime underline-links, witte koppen.
+5. **Metrics:** card-grid met grote cijfers (donker, subtiele border).
+6. **Gallery** (optioneel): grid van extra screenshots.
+7. **CTA:** lichte Canvas-strook onderaan (bewust contrast: pagina sluit "uit het donker"), Onyx-knop met lime cirkel-pijl.
+
+**Sortering homepage:** primair op `order` (asc), secundair op `year` (desc). Zet `order: 1, 2, 3, …` om de volgorde expliciet te bepalen.
 
 ### Project structuur (suggestie)
 
@@ -575,6 +632,12 @@ Lijst van belangrijke keuzes die in dit project vastliggen, zodat ze niet opnieu
 - ✅ Projecten-sectie design: light mode, custom achtergrond met basistint `#ECECEC` + subtiele Volt radial-gradient glows in tegengestelde hoeken + transparant grid-patroon (64×64px lijnen op 5% Onyx-opacity). 3 cards in een grid (`grid-cols-3` op `lg`, stack op kleinere schermen).
 - ✅ Project-card design: aspect-[4/5] portret, vol-bleed achtergrond-foto + donker overlay-verloop voor leesbaarheid, tekst-overlay (jaar + categorie boven, grote witte titel + lime cirkel-pijl onder). Hover: lift 4px + image-zoom 4%.
 - ✅ Project-data ondersteunt optionele `image` property; default fallback: `/images/0fee03df-bb3f-4e63-af21-cedff5427e99.png` (laptop studio shot). Project "Evenementen tekentool" heeft eigen image (`/images/tekentool.png`).
+- ✅ CMS-aanpak: **Astro Content Collections** (markdown + git, geen externe CMS). Schema in `src/content.config.ts`, content in `src/content/projecten/[slug].md`, foto's in `public/images/projecten/[slug]/`. Volledige workflow staat in §5.3.
+- ✅ Project-detailpagina's worden statisch gegenereerd via `src/pages/projecten/[slug].astro` (getStaticPaths + render). Template: zie §5.3.
+- ✅ **Detailpagina-stijl is donker (Onyx-bg, witte tekst)** alleen op de content zelf (`bg-onyx` op de `<article>`); de **Navigation blijft licht** (Canvas-bg met onyx tekst) als signaal dat je een sub-pagina bezoekt en als visueel contrast met de donkere body daaronder. Layout heeft géén theme-prop — de detailpagina kleurt zijn eigen `<article>`. Footer blijft Onyx (was al zo).
+- ✅ **Editorial hero-layout** op detailpagina: grote titel boven-links (multi-line, tot 7rem), grote excerpt onder-rechts (tot 2.75rem). Géén "subtitle" maar een prominente impact-zin. Subtiele vertical guides als achtergrond, decoratieve crosshair en sparkle SVG-iconen voor visuele rust.
+- ✅ Cover-image op detailpagina is **full-bleed**, géén browser-frame meer (in tegenstelling tot de oude versie). Dit benadrukt het beeld en past bij de editorial spread.
+- ✅ Schema heeft verplichte `problem` en `solution` velden zodat de 2-koloms problem/solution sectie structureel data is, geen markdown-parsing. Markdown body blijft voor verdere uitwerking ("Hoe het werkt", "Wat het oplevert", of vrij).
 
 ---
 
@@ -589,8 +652,7 @@ Lijst van zaken die nog uitgewerkt moeten worden:
 - ⏳ Aanpak-sectie (4-staps tijdlijn: Verkennen → Schetsen → Bouwen → Live) nog niet geïmplementeerd
 - ⏳ Over-mij sectie nog niet geïmplementeerd
 - ⏳ Contact-sectie (Onyx-donker) nog niet geïmplementeerd
-- ⏳ Project-detailpagina's `/projecten/[slug]` aanmaken (anders zijn de card-links nu broken)
-- ⏳ Case studies uitwerken voor de drie projecten
+- ⏳ Case-content per project verfijnen (huidige bodies zijn placeholders, schrijfwerk per project staat klaar in `src/content/projecten/*.md`)
 - ⏳ Contact-flow bepalen (Cal.com vs Calendly vs eigen form)
 - ⏳ Eventuele 3D-elementen via Spline.design (later, optioneel)
 - ⏳ Blog-strategie en eerste posts

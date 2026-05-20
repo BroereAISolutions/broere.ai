@@ -1,35 +1,11 @@
 ---
-type Project = {
-  year: string;
-  category: string;
-  title: string;
-  href: string;
-  image?: string;
-};
+import { getCollection } from "astro:content";
 
-const defaultCardBg = "/images/0fee03df-bb3f-4e63-af21-cedff5427e99.png";
-
-const projects: Project[] = [
-  {
-    year: "2026",
-    category: "Maatwerk SaaS",
-    title: "Crew planning & uren tool",
-    href: "/projecten/crew-planning",
-  },
-  {
-    year: "2026",
-    category: "Web app",
-    title: "Evenementen tekentool",
-    href: "/projecten/tekentool",
-    image: "/images/tekentool.png",
-  },
-  {
-    year: "2025",
-    category: "Maatwerk SaaS",
-    title: "Feedback platform",
-    href: "/projecten/feedback",
-  },
-];
+const projecten = (await getCollection("projecten", ({ data }) => !data.draft))
+  .sort((a, b) => {
+    if (a.data.order !== b.data.order) return a.data.order - b.data.order;
+    return b.data.year - a.data.year;
+  });
 ---
 
 <section class="projects-section relative text-onyx">
@@ -46,15 +22,15 @@ const projects: Project[] = [
 
     <ul class="mt-12 lg:mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-7">
       {
-        projects.map((project) => (
+        projecten.map((project) => (
           <li>
             <a
-              href={project.href}
+              href={`/projecten/${project.id}`}
               class="group relative flex aspect-[4/5] flex-col overflow-hidden rounded-2xl transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_18px_40px_rgba(25,26,35,0.18)]"
             >
               <div
                 class="absolute inset-0 -z-10 bg-cover bg-center transition-transform duration-700 group-hover:scale-[1.04]"
-                style={`background-image: url('${project.image ?? defaultCardBg}');`}
+                style={`background-image: url('${project.data.coverImage}');`}
               />
               <div
                 class="absolute inset-0 -z-10 bg-gradient-to-b from-black/20 via-black/10 to-black/55"
@@ -62,15 +38,15 @@ const projects: Project[] = [
               />
 
               <div class="flex items-center justify-between px-6 pt-6 text-[11px] font-medium tracking-tight text-white/70">
-                <span>{project.year}</span>
-                <span>{project.category}</span>
+                <span>{project.data.year}</span>
+                <span>{project.data.category}</span>
               </div>
 
               <div class="mt-auto flex items-end justify-between gap-3 px-6 pb-6">
                 <h3
                   class="font-bold tracking-[-0.025em] leading-[1.05] text-white project-title"
                 >
-                  {project.title}
+                  {project.data.title}
                 </h3>
                 <span
                   class="flex h-10 w-10 flex-none items-center justify-center rounded-full bg-volt text-onyx transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"

@@ -1,0 +1,364 @@
+---
+import { getCollection, render, type CollectionEntry } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+
+export async function getStaticPaths() {
+  const entries = await getCollection("projecten", ({ data }) => !data.draft);
+  return entries.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+type Props = { entry: CollectionEntry<"projecten"> };
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const { data } = entry;
+
+const pageTitle = `${data.title} — Broere AI Solutions`;
+const pageDescription = data.excerpt;
+---
+
+<Layout title={pageTitle} description={pageDescription}>
+  <article class="bg-onyx text-white relative overflow-hidden">
+    <div class="absolute inset-0 pointer-events-none guides" aria-hidden="true"></div>
+
+    <section class="relative">
+      <div class="mx-auto w-full max-w-[1200px] px-6 lg:px-10 pt-10 lg:pt-14 pb-12 lg:pb-16">
+        <a
+          href="/#projecten"
+          class="inline-flex items-center gap-2 text-[13px] font-medium text-white/55 hover:text-white transition-colors"
+        >
+          <svg
+            width="14"
+            height="14"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+          </svg>
+          Terug naar projecten
+        </a>
+
+        <div class="mt-10 lg:mt-12 flex flex-wrap items-center gap-3 text-[11px] font-mono uppercase tracking-[0.18em] text-white/40">
+          <span>{data.year}</span>
+          <span class="h-1 w-1 rounded-full bg-white/30"></span>
+          <span>{data.category}</span>
+          {data.client && (
+            <>
+              <span class="h-1 w-1 rounded-full bg-white/30"></span>
+              <span>{data.client}</span>
+            </>
+          )}
+        </div>
+
+        <h1 class="mt-6 lg:mt-8 font-semibold tracking-[-0.04em] leading-[0.95] hero-title text-white max-w-[14ch]">
+          {data.title}
+        </h1>
+
+        <div class="mt-20 lg:mt-32 flex justify-end relative">
+          <p class="hero-excerpt max-w-[18ch] font-medium tracking-[-0.02em] leading-[1.15] text-white">
+            {data.excerpt}
+          </p>
+          <span class="absolute right-0 -bottom-12 hidden lg:block text-white/15" aria-hidden="true">
+            <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+              <circle cx="18" cy="18" r="5.5" stroke="currentColor" stroke-width="1"></circle>
+              <line x1="18" y1="0" x2="18" y2="9" stroke="currentColor" stroke-width="1"></line>
+              <line x1="18" y1="27" x2="18" y2="36" stroke="currentColor" stroke-width="1"></line>
+              <line x1="0" y1="18" x2="9" y2="18" stroke="currentColor" stroke-width="1"></line>
+              <line x1="27" y1="18" x2="36" y2="18" stroke="currentColor" stroke-width="1"></line>
+            </svg>
+          </span>
+        </div>
+
+        {data.stack.length > 0 && (
+          <ul class="mt-16 lg:mt-24 flex flex-wrap gap-2">
+            {data.stack.map((item) => (
+              <li class="rounded-md border border-white/15 bg-white/[0.04] px-3 py-1.5 text-[12px] font-mono text-white/75">
+                {item}
+              </li>
+            ))}
+          </ul>
+        )}
+
+        {data.url && (
+          <a
+            href={data.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="mt-6 inline-flex items-center gap-2.5 rounded-[10px] bg-volt px-6 py-3 text-[15px] font-semibold text-onyx hover:-translate-y-0.5 hover:shadow-[0_6px_16px_rgba(185,255,102,0.18)] transition-all"
+          >
+            Bekijk live
+            <span class="flex h-5 w-5 items-center justify-center rounded-full bg-onyx text-volt">
+              <svg
+                width="11"
+                height="11"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="3"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <line x1="7" y1="17" x2="17" y2="7"></line>
+                <polyline points="7 7 17 7 17 17"></polyline>
+              </svg>
+            </span>
+          </a>
+        )}
+      </div>
+    </section>
+
+    <div class="relative mx-auto w-full max-w-[1200px] px-6 lg:px-10">
+      <figure class="overflow-hidden rounded-2xl border border-white/8 bg-white/[0.02]">
+        <img
+          src={data.coverImage}
+          alt={data.coverAlt ?? data.title}
+          class="w-full h-auto block"
+          loading="eager"
+        />
+      </figure>
+      <span class="absolute -right-1 lg:right-2 -bottom-5 hidden md:block text-white/50" aria-hidden="true">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="currentColor">
+          <path d="M16 0 L17.6 14.4 L32 16 L17.6 17.6 L16 32 L14.4 17.6 L0 16 L14.4 14.4 Z"></path>
+        </svg>
+      </span>
+    </div>
+
+    <section class="relative">
+      <div class="mx-auto w-full max-w-[1200px] px-6 lg:px-10 pt-24 lg:pt-32 pb-16 lg:pb-20">
+        <div class="grid gap-12 lg:grid-cols-2 lg:gap-20">
+          <div>
+            <h2 class="lowercase font-medium tracking-[-0.02em] text-white/35 section-label mb-6">
+              problem
+            </h2>
+            <p class="text-[16px] lg:text-[17px] leading-[1.6] text-white/85">
+              {data.problem}
+            </p>
+          </div>
+          <div>
+            <h2 class="lowercase font-medium tracking-[-0.02em] text-white/35 section-label mb-6">
+              solution
+            </h2>
+            <p class="text-[16px] lg:text-[17px] leading-[1.6] text-white/85">
+              {data.solution}
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="relative mx-auto w-full max-w-[760px] px-6 lg:px-10 pb-16 lg:pb-20">
+      <div class="prose-dark">
+        <Content />
+      </div>
+
+      {data.metrics.length > 0 && (
+        <div class="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {data.metrics.map((metric) => (
+            <div class="rounded-xl border border-white/10 bg-white/[0.03] p-6">
+              <div class="font-semibold text-white text-[32px] leading-none tracking-[-0.025em]">
+                {metric.value}
+              </div>
+              <div class="mt-2 text-[13px] text-white/55">{metric.label}</div>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+
+    {data.gallery.length > 0 && (
+      <div class="relative mx-auto w-full max-w-[1200px] px-6 lg:px-10 pb-20">
+        <h2 class="font-semibold tracking-[-0.02em] text-[24px] text-white/85 mb-8 lowercase">
+          gallery
+        </h2>
+        <div class="grid gap-6 sm:grid-cols-2">
+          {data.gallery.map((shot) => (
+            <figure class="overflow-hidden rounded-xl border border-white/10 bg-white/[0.03]">
+              <img
+                src={shot.src}
+                alt={shot.alt ?? ""}
+                class="w-full h-auto block"
+                loading="lazy"
+              />
+              {shot.caption && (
+                <figcaption class="px-4 py-3 text-[13px] text-white/55 border-t border-white/10">
+                  {shot.caption}
+                </figcaption>
+              )}
+            </figure>
+          ))}
+        </div>
+      </div>
+    )}
+
+    <section class="relative">
+      <div class="mx-auto w-full max-w-[1200px] px-6 lg:px-10 pb-24 lg:pb-32 text-center">
+        <h2 class="font-bold tracking-[-0.025em] text-[clamp(2rem,4vw,3rem)] leading-[1.05]">
+          Zelf zoiets bouwen?
+        </h2>
+        <p class="mt-4 max-w-xl mx-auto text-[16px] text-white/65 leading-[1.55]">
+          Plan een vrijblijvend gesprek. We bespreken je probleem en kijken wat
+          er mogelijk is.
+        </p>
+        <a
+          href="mailto:hi@broere.ai"
+          class="mt-8 inline-flex items-center gap-2.5 rounded-[10px] bg-volt px-7 py-3.5 text-[15px] font-semibold text-onyx hover:-translate-y-0.5 hover:shadow-[0_6px_16px_rgba(185,255,102,0.25)] transition-all"
+        >
+          Plan een gesprek
+          <span class="flex h-5 w-5 items-center justify-center rounded-full bg-onyx text-volt">
+            <svg
+              width="11"
+              height="11"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="3"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <line x1="7" y1="17" x2="17" y2="7"></line>
+              <polyline points="7 7 17 7 17 17"></polyline>
+            </svg>
+          </span>
+        </a>
+      </div>
+    </section>
+  </article>
+</Layout>
+
+<style>
+  .hero-title {
+    font-size: clamp(3rem, 9vw, 7rem);
+  }
+
+  .hero-excerpt {
+    font-size: clamp(1.5rem, 3.4vw, 2.75rem);
+  }
+
+  .section-label {
+    font-size: clamp(1.5rem, 2.2vw, 1.875rem);
+  }
+
+  .guides {
+    background-image: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0.04) 1px,
+      transparent 1px
+    );
+    background-size: 12.5% 100%;
+    background-position: 0 0;
+  }
+
+  .prose-dark :global(h2) {
+    font-size: clamp(1.375rem, 2vw, 1.625rem);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    color: rgba(255, 255, 255, 0.95);
+  }
+
+  .prose-dark :global(h2:first-child) {
+    margin-top: 0;
+  }
+
+  .prose-dark :global(h3) {
+    font-size: 1.15rem;
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+    color: rgba(255, 255, 255, 0.95);
+  }
+
+  .prose-dark :global(p) {
+    font-size: 16px;
+    line-height: 1.65;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 1.15rem;
+  }
+
+  .prose-dark :global(strong) {
+    color: white;
+    font-weight: 600;
+  }
+
+  .prose-dark :global(a) {
+    color: white;
+    text-decoration: underline;
+    text-decoration-color: var(--color-volt);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 3px;
+  }
+
+  .prose-dark :global(ul) {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.5rem 0;
+  }
+
+  .prose-dark :global(ul li) {
+    position: relative;
+    padding-left: 1.5rem;
+    font-size: 16px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.72);
+    margin-bottom: 0.5rem;
+  }
+
+  .prose-dark :global(ul li::before) {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.65em;
+    width: 7px;
+    height: 7px;
+    border-radius: 999px;
+    background-color: var(--color-volt);
+  }
+
+  .prose-dark :global(blockquote) {
+    border-left: 3px solid var(--color-volt);
+    padding-left: 1.25rem;
+    margin: 1.75rem 0;
+    color: rgba(255, 255, 255, 0.85);
+    font-style: italic;
+  }
+
+  .prose-dark :global(code) {
+    font-family: var(--font-mono);
+    font-size: 0.9em;
+    background-color: rgba(255, 255, 255, 0.08);
+    padding: 2px 6px;
+    border-radius: 4px;
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  .prose-dark :global(pre) {
+    background-color: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 1.25rem;
+    border-radius: 12px;
+    overflow-x: auto;
+    margin: 1.5rem 0;
+  }
+
+  .prose-dark :global(pre code) {
+    background: transparent;
+    padding: 0;
+    color: inherit;
+  }
+
+  .prose-dark :global(img) {
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    margin: 2rem 0;
+  }
+</style>
