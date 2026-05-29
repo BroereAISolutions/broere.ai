@@ -4,7 +4,7 @@ year: 2025
 category: "Maatwerk SaaS"
 order: 3
 excerpt: "Alle feedback van klanten en team centraal, gekoppeld aan de juiste persoon."
-coverImage: "/images/0fee03df-bb3f-4e63-af21-cedff5427e99.png"
+coverImage: "/images/feedback-tool.png"
 coverAlt: "Screenshot van het feedback platform"
 stack:
   - "Next.js"

@@ -36,6 +36,16 @@ const projecten = defineCollection({
         }),
       )
       .default([]),
+    reviews: z
+      .array(
+        z.object({
+          quote: z.string(),
+          author: z.string(),
+          role: z.string().optional(),
+          avatar: z.string().optional(),
+        }),
+      )
+      .default([]),
   }),
 });
 

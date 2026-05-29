@@ -1,0 +1,122 @@
+---
+const diensten = [
+  {
+    title: "Automations",
+    description: "Processen automatiseren door workflows te bouwen, die repetitief werk voor jou overnemen.",
+    href: "#contact",
+    iconBg: "bg-volt",
+    iconColor: "#191A23",
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>`,
+  },
+  {
+    title: "Integraties",
+    description: "Systemen aan elkaar koppelen, zodat deze samen kunnen werken.",
+    href: "#contact",
+    iconBg: "bg-onyx",
+    iconColor: "#B9FF66",
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>`,
+  },
+  {
+    title: "Custom Software",
+    description: "Op maat gemaakte tools en software voor jouw business.",
+    href: "#contact",
+    iconBg: "bg-volt",
+    iconColor: "#191A23",
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>`,
+  },
+  {
+    title: "AI Oplossingen",
+    description: "AI geïntegreerd in jouw bedrijfssoftware.",
+    href: "#contact",
+    iconBg: "bg-onyx",
+    iconColor: "#B9FF66",
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96-.46 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 4.44-1.14Z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96-.46 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-4.44-1.14Z"/></svg>`,
+  },
+];
+---
+
+<section id="diensten" class="bg-canvas">
+  <div class="mx-auto w-full max-w-[1200px] px-6 lg:px-10 py-16 lg:py-24">
+
+    <!-- Header -->
+    <div class="text-center mb-6">
+      <span class="text-[11px] font-mono uppercase tracking-[0.18em] text-onyx/40">Diensten en services</span>
+      <h2 class="mt-4 font-bold tracking-[-0.03em] section-title text-onyx">
+        Wat zou jij doen<br>
+        <span class="inline-block bg-volt px-2 rounded-[5px]">met 10 uur extra per week?</span>
+      </h2>
+      <p class="mt-5 text-[16px] text-onyx/55 leading-[1.6] max-w-[44ch] mx-auto">
+        Vier kerngebieden waar ik mee help. Allemaal gericht op tijd terugwinnen en het werk slimmer maken.
+      </p>
+    </div>
+
+    <!-- Illustration -->
+    <div class="flex justify-center mb-6 lg:mb-8">
+      <img
+        src="/illustrations/broere-illustrations/custom-software/custom-software-light.svg"
+        alt=""
+        width="280"
+        height="280"
+        class="opacity-90"
+        aria-hidden="true"
+      />
+    </div>
+
+    <!-- Cards -->
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-5">
+      {diensten.map((dienst) => (
+        <div class="group pt-8">
+          <!-- Card (relative so icon is positioned inside it) -->
+          <a
+            href={dienst.href}
+            class="relative flex flex-col h-full bg-white border border-[#E5E5E5] rounded-2xl pt-14 pb-7 px-6 hover:shadow-[0_8px_32px_rgba(25,26,35,0.09)] hover:-translate-y-1 transition-all duration-200"
+          >
+          <!-- Floating icon (inside card so it moves with it) -->
+          <div
+            class={`absolute -top-7 left-6 w-14 h-14 rounded-2xl ${dienst.iconBg} flex items-center justify-center shadow-[0_4px_16px_rgba(25,26,35,0.12)]`}
+            style={`color: ${dienst.iconColor}`}
+            set:html={dienst.icon}
+          />
+            <h3 class="font-bold text-[19px] tracking-[-0.03em] text-onyx">
+              {dienst.title}
+            </h3>
+            <p class="mt-3 text-[14px] text-onyx/55 leading-[1.65] flex-1">
+              {dienst.description}
+            </p>
+            <div class="mt-6 inline-flex items-center gap-2 text-[13px] font-semibold text-onyx/40 group-hover:text-onyx transition-colors duration-200">
+              Lees meer
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-200">
+                <line x1="7" y1="17" x2="17" y2="7"/>
+                <polyline points="7 7 17 7 17 17"/>
+              </svg>
+            </div>
+          </a>
+        </div>
+      ))}
+    </div>
+
+    <!-- CTA -->
+    <div class="mt-14 flex justify-center">
+      <a
+        href="#contact"
+        class="inline-flex items-center gap-3 bg-onyx text-white font-semibold text-[15px] px-7 py-4 rounded-[10px] hover:shadow-[0_6px_20px_rgba(25,26,35,0.22)] hover:-translate-y-px transition-all duration-200"
+      >
+        Plan een gesprek
+        <span class="flex h-6 w-6 items-center justify-center rounded-full bg-volt">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#191A23" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="7" y1="17" x2="17" y2="7"/>
+            <polyline points="7 7 17 7 17 17"/>
+          </svg>
+        </span>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .section-title {
+    font-size: clamp(1.9rem, 3.8vw, 2.8rem);
+    line-height: 1.1;
+  }
+</style>

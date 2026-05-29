@@ -4,7 +4,7 @@ year: 2026
 category: "Maatwerk SaaS"
 order: 1
 excerpt: "Een tool gebouwd voor verhuurbedrijven om projecten, medewerkers, voertuigen en uren in te managen."
-coverImage: "/images/0fee03df-bb3f-4e63-af21-cedff5427e99.png"
+coverImage: "/images/crew-planner-app.png"
 coverAlt: "Screenshot van de crew planning tool"
 stack:
   - "Next.js"
@@ -31,19 +31,41 @@ metrics:
   - label: "Crew leden in productie"
     value: "30+"
   - label: "Maandelijkse uren via tool"
-    value: "2000"
-gallery: []
+    value: "2000+"
+gallery: 
+  - src: /images/planner-fotos/planner-planning.png
+    alt: Planning overzicht
+    caption: Beheerdersdashboard
+  - src: /images/planner-fotos/planner-analytics.png
+    alt: Analytics overzicht
+    caption: Overzicht van alle projecten en kosten
+  - src: /images/planner-fotos/planner-instellingen.png
+    alt: Instellingen pagina
+    caption: Pagina om je bedrijf in te beheren
+  - src: /images/planner-fotos/planner-medewerker.png
+    alt: Medewerker overzicht
+    caption: Overzicht van alle beschikbaarheid van medewerkers
+
+
+
 ---
+## Het verhaal
+Door mijn expertise in het maken van data first SaaS-applicaties, heb ik samen met Henk een lijst met functionaliteiten voor een MVP klaargezet, waarmee ik van start kon en beginnen met prototypen. Na vele avonduren ontwerpen en bouwen stond na een aantal weken de eerste versie er. De Fietsenrekhuren.com planningstool. In de volgende weken ben ik druk bezig geweest met het verwerken van alle feedback en het bouwen van nieuwe features, met de grote deadline in zicht: Paaspop. 
+
+De bedoeling was dat op Paaspop 2026 de app live en ready zou moeten zijn voor productie, aangezien op dit evenement 35+ medewerkers gebruik moesten gaan maken van deze tool. Dit is ook gelukt en alles is succesvol verlopen. Na Paaspop hebben we veel feedback mogen ontvangen, die we hebben verwerkt om een nog sterkere app neer te zetten. 
+
+Zowel de beheerders als de medewerkers reageren heel erg positief op de app en vinden hem fijn werken.
+
 
 ## Hoe het werkt
 
-- **Beschikbaarheid doorgeven.** Medewerkers geven hun beschikbaarheid op via de app.
-- **Uren klokken.** Medewerkers accepteren shifts, houden uren bij en loggen pauzes.
-- **Uren-export.** Naar de loonadministratie in één klik (CSV / Excel).
-- **Rollen en rechten.** Planners zien alleen hun eigen team.
+- **Beschikbaarheid doorgeven.** Medewerkers geven hun beschikbaarheid door via de app.
+- **Uren klokken** Medewerkers klokken na iedere shift hun uren in de app
+- **Dashboard.** Zowel medewerkers als beheerders hebben een eigen dashboard
+- **Inzichten.** Beheerders krijgen inzichten in de beschikbaarheid, declaraties en uren van de medewerkers.
+- **Beheer.** In de app kunnen beheerders hun team en wagenpark beheren.
+- **Exporteren.** Alle overzichten vallen in één klik te exporteren naar excel.
 
 ## Wat het oplevert
 
-De planner is uren per week kwijt aan opzoeken en handmatig overtikken. Door alles
-in één tool te krijgen verdwijnt die overhead, en is de uren-administratie automatisch
-sluitend.
+De nieuwe tool levert een hoop positieve reacties op bij de medewerkers, zij vinden het erg fijn werken. Ook Freetime is erg tevreden, en heeft hiermee zelfs 1.5 uur tijd bespaard tijdens de laatse loonadministratie.

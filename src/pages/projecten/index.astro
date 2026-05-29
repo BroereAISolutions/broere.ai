@@ -1,0 +1,181 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+
+const projecten = (await getCollection("projecten", ({ data }) => !data.draft))
+  .sort((a, b) => {
+    if (a.data.order !== b.data.order) return a.data.order - b.data.order;
+    return b.data.year - a.data.year;
+  });
+
+const pageTitle = "Projecten — Broere AI Solutions";
+const pageDescription =
+  "Mini SaaS-tools, automatiseringen en maatwerk software die concreet werk uit handen nemen. Bekijk alle projecten van Broere AI Solutions.";
+---
+
+<Layout title={pageTitle} description={pageDescription}>
+  <div class="projects-page text-white">
+    <div class="absolute inset-0 pointer-events-none projects-bg" aria-hidden="true"></div>
+    <div class="absolute inset-0 pointer-events-none guides" aria-hidden="true"></div>
+
+    <div class="relative mx-auto w-full max-w-[1200px] px-6 lg:px-10 pt-14 lg:pt-20 pb-24 lg:pb-32">
+
+      <div class="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+        <div>
+          <div class="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.18em] text-white/40">
+            <span class="h-1.5 w-1.5 rounded-full bg-volt" aria-hidden="true"></span>
+            Alle projecten
+          </div>
+
+          <h1 class="mt-5 font-bold tracking-[-0.035em] leading-[1] page-title text-white">
+            Tools die ik heb<br />gebouwd.
+          </h1>
+        </div>
+
+        <p class="max-w-xs text-[15px] leading-[1.6] text-white/45 lg:text-right lg:mb-1">
+          Klik op een project om de gehele casus te zien.
+        </p>
+      </div>
+
+      <ul class="mt-14 lg:mt-18 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-7">
+        {
+          projecten.map((project) => (
+            <li class="flex flex-col gap-4">
+              <a
+                href={`/projecten/${project.id}`}
+                class="group relative z-0 flex aspect-[4/5] flex-col overflow-hidden rounded-2xl transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_18px_40px_rgba(0,0,0,0.4)]"
+              >
+                <div
+                  class="absolute inset-0 -z-10 bg-cover bg-center transition-transform duration-700 group-hover:scale-[1.04]"
+                  style={`background-image: url('${project.data.coverImage}');`}
+                />
+                <div
+                  class="absolute inset-0 -z-10 bg-gradient-to-b from-black/20 via-black/10 to-black/65"
+                  aria-hidden="true"
+                />
+
+                <div class="flex items-center justify-between px-6 pt-6 text-[11px] font-medium tracking-tight text-white/70">
+                  <span>{project.data.year}</span>
+                  <span>{project.data.category}</span>
+                </div>
+
+                <div class="mt-auto flex items-end justify-between gap-3 px-6 pb-6">
+                  <h2 class="font-bold tracking-[-0.025em] leading-[1.05] text-white project-title">
+                    {project.data.title}
+                  </h2>
+                  <span
+                    class="flex h-10 w-10 flex-none items-center justify-center rounded-full bg-volt text-onyx transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                    aria-hidden="true"
+                  >
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <line x1="7" y1="17" x2="17" y2="7" />
+                      <polyline points="7 7 17 7 17 17" />
+                    </svg>
+                  </span>
+                </div>
+              </a>
+
+              <div class="px-1">
+                <p class="text-[14px] leading-[1.55] text-white/50">
+                  {project.data.excerpt}
+                </p>
+                {project.data.stack.length > 0 && (
+                  <ul class="mt-3 flex flex-wrap gap-1.5" aria-label="Tech stack">
+                    {project.data.stack.map((item) => (
+                      <li class="rounded-md border border-white/12 bg-white/[0.04] px-2.5 py-1 text-[11px] font-mono text-white/55">
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+
+    <div class="relative bg-canvas px-6 lg:px-10">
+      <div class="mx-auto w-full max-w-[1200px] py-16 lg:py-20 flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+        <div>
+          <h2 class="font-bold tracking-[-0.025em] text-onyx cta-title">
+            Zelf zoiets bouwen?
+          </h2>
+          <p class="mt-3 max-w-md text-[15px] leading-[1.6] text-onyx/55">
+            Plan een vrijblijvend kennismakingsgesprek. We bespreken je probleem en kijken wat er mogelijk is.
+          </p>
+        </div>
+        <a
+          href="mailto:hi@broere.ai"
+          class="inline-flex flex-none items-center gap-3 rounded-[10px] bg-onyx px-6 py-3.5 text-[15px] font-semibold text-white transition-all hover:-translate-y-0.5 hover:shadow-[0_6px_16px_rgba(25,26,35,0.18)]"
+        >
+          Plan een gesprek
+          <span
+            class="flex h-5 w-5 items-center justify-center rounded-full bg-volt text-onyx"
+            aria-hidden="true"
+          >
+            <svg
+              width="11"
+              height="11"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="3"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <line x1="7" y1="17" x2="17" y2="7" />
+              <polyline points="7 7 17 7 17 17" />
+            </svg>
+          </span>
+        </a>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .projects-page {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+  }
+
+  .projects-bg {
+    background-color: #191a23;
+    background-image:
+      radial-gradient(ellipse 60% 40% at 90% 0%, rgba(185, 255, 102, 0.08), transparent 60%),
+      radial-gradient(ellipse 40% 30% at 5% 100%, rgba(185, 255, 102, 0.05), transparent 60%);
+  }
+
+  .guides {
+    background-image: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0.04) 1px,
+      transparent 1px
+    );
+    background-size: 12.5% 100%;
+  }
+
+  .page-title {
+    font-size: clamp(2.75rem, 7vw, 5rem);
+    line-height: 1;
+  }
+
+  .project-title {
+    font-size: clamp(1.375rem, 2vw, 1.75rem);
+  }
+
+  .cta-title {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+  }
+</style>

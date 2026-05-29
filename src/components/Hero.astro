@@ -3,6 +3,7 @@ const cycleWords = ["AI", "Apps", "Automations", "APIs", "Agents"];
 ---
 
 <section class="relative overflow-hidden">
+  <div class="guides" aria-hidden="true"></div>
   <div class="mx-auto w-full max-w-[1200px] px-6 lg:px-10 pt-12 pb-24 lg:pt-20 lg:pb-32">
     <div class="grid items-start gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-16">
       <div>
@@ -40,8 +41,7 @@ const cycleWords = ["AI", "Apps", "Automations", "APIs", "Agents"];
         </h1>
 
         <p class="mt-8 max-w-xl text-[17px] leading-[1.6] text-onyx/70">
-          Mini SaaS-tools, automatiseringen en maatwerk software die je business
-          concreet vooruit helpen. Geen hype, gewoon quick wins die werken.
+          Passie in het optimaliseren van processen aan de hand van de nieuwste technologieën. Geen hype, gewoon quick wins die werken.
         </p>
 
         <div class="mt-10 flex flex-wrap items-center gap-3">
@@ -72,7 +72,7 @@ const cycleWords = ["AI", "Apps", "Automations", "APIs", "Agents"];
           </a>
 
           <a
-            href="projecten"
+            href="/projecten"
             class="inline-flex items-center gap-2 rounded-lg border border-onyx/15 bg-transparent px-5 py-3.5 text-[15px] font-semibold text-onyx transition-all hover:border-onyx/35 hover:-translate-y-0.5"
           >
             Bekijk projecten
@@ -98,6 +98,19 @@ const cycleWords = ["AI", "Apps", "Automations", "APIs", "Agents"];
 </section>
 
 <style>
+  .guides {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image: repeating-linear-gradient(
+      to right,
+      rgba(25, 26, 35, 0.06) 0px,
+      rgba(25, 26, 35, 0.06) 1px,
+      transparent 1px,
+      transparent 12.5%
+    );
+  }
+
   .hero-title {
     font-size: clamp(3rem, 9vw, 5.5rem);
     line-height: 0.95;

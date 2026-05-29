@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none" role="img" aria-label="AI Solutions illustration">
+  <rect x="65" y="65" width="70" height="70" rx="12" fill="#FFFFFF" stroke="#191A23" stroke-width="2.5"/>
+  <rect x="80" y="80" width="40" height="40" rx="6" fill="#191A23"/>
+  <path d="M 100 88 L 103 96 L 111 100 L 103 104 L 100 112 L 97 104 L 89 100 L 97 96 Z" fill="#B9FF66"/>
+  <line x1="65" y1="78" x2="55" y2="78" stroke="#191A23" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="65" y1="90" x2="55" y2="90" stroke="#191A23" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="65" y1="100" x2="55" y2="100" stroke="#191A23" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="65" y1="110" x2="55" y2="110" stroke="#191A23" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="65" y1="122" x2="55" y2="122" stroke="#191A23" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="135" y1="78" x2="145" y2="78" stroke="#191A23" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="135" y1="90" x2="145" y2="90" stroke="#191A23" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="135" y1="100" x2="145" y2="100" stroke="#191A23" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="135" y1="110" x2="145" y2="110" stroke="#191A23" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="135" y1="122" x2="145" y2="122" stroke="#191A23" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="78" y1="65" x2="78" y2="55" stroke="#191A23" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="90" y1="65" x2="90" y2="55" stroke="#191A23" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="100" y1="65" x2="100" y2="55" stroke="#191A23" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="110" y1="65" x2="110" y2="55" stroke="#191A23" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="122" y1="65" x2="122" y2="55" stroke="#191A23" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="78" y1="135" x2="78" y2="145" stroke="#191A23" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="90" y1="135" x2="90" y2="145" stroke="#191A23" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="100" y1="135" x2="100" y2="145" stroke="#191A23" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="110" y1="135" x2="110" y2="145" stroke="#191A23" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="122" y1="135" x2="122" y2="145" stroke="#191A23" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M 30 40 L 33 47 L 40 50 L 33 53 L 30 60 L 27 53 L 20 50 L 27 47 Z" fill="#FFFFFF" stroke="#191A23" stroke-width="1.5"/>
+  <path d="M 170 30 L 172 34 L 176 36 L 172 38 L 170 42 L 168 38 L 164 36 L 168 34 Z" fill="#191A23"/>
+  <path d="M 30 160 L 32 164 L 36 166 L 32 168 L 30 172 L 28 168 L 24 166 L 28 164 Z" fill="#191A23"/>
+  <path d="M 170 165 L 173 172 L 180 175 L 173 178 L 170 185 L 167 178 L 160 175 L 167 172 Z" fill="#FFFFFF" stroke="#191A23" stroke-width="1.5"/>
+</svg>
