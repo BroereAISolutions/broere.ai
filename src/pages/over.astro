@@ -1,0 +1,261 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const techStack = [
+  { label: "Next.js" },
+  { label: "React" },
+  { label: "Astro" },
+  { label: "TypeScript" },
+  { label: "Supabase" },
+  { label: "PostgreSQL" },
+  { label: "n8n" },
+  { label: "Make" },
+  { label: "Claude API" },
+  { label: "OpenAI API" },
+  { label: "Vercel" },
+  { label: "Cloudflare" },
+];
+---
+
+<Layout
+  title="Over — Broere AI Solutions"
+  description="Ik ben Bas Broere, 22 jaar, en help MKB-bedrijven met AI, automatiseringen en maatwerk software die concreet resultaat opleveren."
+>
+  <!-- ── Split hero ─────────────────────────────────────────────────── -->
+  <section class="grid lg:grid-cols-2 min-h-[92vh]">
+    <div class="relative overflow-hidden bg-onyx lg:sticky lg:top-20 lg:h-[calc(100vh-5rem)]">
+      <img
+        src="/images/personal/personal-dark-background.png"
+        alt="Bas Broere, founder van Broere AI Solutions"
+        width="900"
+        height="1200"
+        loading="eager"
+        decoding="async"
+        class="h-full w-full object-cover object-top"
+      />
+      <div
+        class="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-onyx/60 to-transparent lg:hidden"
+        aria-hidden="true"
+      ></div>
+    </div>
+
+    <div class="relative flex flex-col justify-center bg-canvas px-8 py-16 lg:px-16 lg:py-24">
+      <div class="guides absolute inset-0 pointer-events-none" aria-hidden="true"></div>
+      <div class="relative">
+        <span class="font-sans font-medium text-[11px] uppercase tracking-[0.06em] text-onyx/40">Over mij</span>
+        <h1 class="page-title mt-5 font-bold tracking-[-0.04em] text-onyx leading-[0.93]">
+          <span class="block">Bas</span>
+          <span class="block">
+            <span class="inline-block bg-volt px-[0.15em] rounded-[0.1em]">Broere.</span>
+          </span>
+        </h1>
+        <p class="mt-8 text-[clamp(1rem,1.8vw,1.2rem)] font-semibold tracking-[-0.02em] text-onyx leading-[1.35]">
+          22 jaar. Master Business Analytics & Management.<br />Passie voor data en AI.
+        </p>
+        <p class="mt-4 max-w-[38ch] text-[15px] leading-[1.65] text-onyx/55">
+          Ik help kleine ondernemers met tools die hun werkzaamheden vele malen efficiënter maken. Geen hype, gewoon quick wins die werken.
+        </p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a
+            href="/contact"
+            class="inline-flex items-center gap-3 rounded-[10px] bg-onyx px-5 py-3.5 text-[14px] font-semibold text-white shadow-[0_4px_16px_rgba(25,26,35,0.14)] transition-all hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(25,26,35,0.2)]"
+          >
+            Plan een gesprek
+            <span class="inline-flex h-5 w-5 items-center justify-center rounded-full bg-volt text-onyx" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="7" y1="17" x2="17" y2="7"></line>
+                <polyline points="7 7 17 7 17 17"></polyline>
+              </svg>
+            </span>
+          </a>
+          <a
+            href="mailto:bas@broere.ai"
+            class="inline-flex items-center gap-2 rounded-[10px] border border-onyx/15 px-5 py-3.5 text-[14px] font-semibold text-onyx/70 transition-all hover:border-onyx/30 hover:text-onyx hover:-translate-y-0.5"
+          >
+            bas@broere.ai
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Mijn verhaal ──────────────────────────────────────────────── -->
+  <section class="bg-white py-20 lg:py-28">
+    <div class="mx-auto w-full max-w-[1200px] px-6 lg:px-10">
+      <div class="mb-6 lg:mb-8">
+        <h2 class="section-heading font-bold tracking-[-0.03em] text-onyx leading-[1.05]">
+          Mijn <span class="inline-block bg-volt px-[0.12em] rounded-[0.08em]">verhaal</span>
+        </h2>
+      </div>
+      <div class="grid gap-6 lg:grid-cols-[200px_1fr] lg:gap-16">
+        <div></div>
+        <p class="text-[16px] leading-[1.75] text-onyx/70">
+          Mijn naam is Bas, ik ben 22 jaar oud en heb een diepe passie voor data en AI.
+          Vanaf jongs af aan ben ik een tech-freak, en sinds de doorbraak van AI ben ik
+          hier volledig in gedoken. Ik volg op dit moment een master in Business Analytics
+          Management en besteed daarnaast veel tijd aan het helpen van kleine ondernemers
+          met het ontwerpen van business tools die hun werkzaamheden vele malen efficiënter
+          maken. Ik kan goed luisteren en problemen scherp in kaart brengen, om deze
+          vervolgens te vertalen naar echte oplossingen die in productie gebruikt worden.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Waarom ────────────────────────────────────────────────────── -->
+  <section class="relative overflow-hidden bg-canvas py-20 lg:py-28">
+    <div class="dot-grid absolute inset-0 pointer-events-none" aria-hidden="true"></div>
+    <div class="relative mx-auto w-full max-w-[1200px] px-6 lg:px-10">
+      <div class="mb-6 lg:mb-8">
+        <h2 class="section-heading font-bold tracking-[-0.03em] leading-[1.05]">
+          <span class="inline-block bg-onyx text-white px-[0.12em] rounded-[0.08em]">Waarom?</span>
+        </h2>
+      </div>
+      <div class="grid gap-6 lg:grid-cols-[200px_1fr] lg:gap-16">
+        <div></div>
+        <p class="text-[16px] leading-[1.75] text-onyx/70">
+          Sinds ik mijn bachelor heb afgerond, ben ik veel gaan nadenken over wat ik nu
+          eigenlijk wilde doen. Ik wist sowieso dat ik iets met AI wilde, maar nog niet
+          precies wat. Tijdens mijn stages ben ik al bezig geweest met het bouwen van AI
+          Agents en deze lijn heb ik doorgezet in mijn baan, waar ik AI-systemen heb
+          ontwikkeld. Daarnaast kreeg ik regelmatig vragen van bekenden en oud-werkgevers
+          of ik zin had in een "beun klusje". Meestal liepen die klusjes uit op behoorlijk
+          grote projecten. Hierdoor ben ik gaan inzien dat veel bedrijven hun processen
+          helemaal niet efficiënt hebben ingericht, en vaak iets doen "omdat ze het zo
+          gewend zijn". Vaak gaat het om hele simpele processen, zoals handmatige
+          administratie of repetitief werk, waar maandelijks uren in gaan zitten. Dat is
+          ook de reden waarom ik Broere AI Solutions ben begonnen: om met de nieuwste
+          technologieën die inefficiënte processen aan te pakken en jouw bedrijf maandelijks
+          uren tijd te besparen, zodat jij je kunt focussen op wat er echt toe doet.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── In de praktijk ───────────────────────────────────────────── -->
+  <section class="bg-white py-20 lg:py-28">
+    <div class="mx-auto w-full max-w-[1200px] px-6 lg:px-10">
+      <div class="mb-6 lg:mb-8">
+        <h2 class="section-heading font-bold tracking-[-0.03em] text-onyx leading-[1.05]">
+          In de <span class="inline-block bg-volt px-[0.12em] rounded-[0.08em]">praktijk</span>
+        </h2>
+      </div>
+      <div class="grid gap-6 lg:grid-cols-[200px_1fr] lg:gap-16">
+        <div></div>
+        <p class="text-[16px] leading-[1.75] text-onyx/70">
+          Een van mijn eerste projecten was voor een lokale ondernemer met 35+ medewerkers
+          die niet langer tevreden was over zijn planningstool. Hij werkte met een uitgebreid
+          pakket vol functies waarvan de meeste nooit werden gebruikt, en ook zijn medewerkers
+          vonden het niet prettig werken. Dat laatste wist ik uit eigen ervaring, want ik had
+          er zelf gewerkt. Hij had al wat geëxperimenteerd in Gemini Studio en vroeg of ik
+          kon bouwen wat hij voor ogen had. Na een productief gesprek hebben we samen de scope
+          voor de eerste versie vastgesteld en ben ik aan de slag gegaan. Met de nieuwste
+          technologieën heb ik een eigen platform gebouwd voor zowel medewerkers als
+          beheerders. De samenwerking verliep soepel: eerst samen de problemen in kaart,
+          daarna aan de slag, met regelmatig een korte afstemming voor input.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Welke technologieën ───────────────────────────────────────── -->
+  <section class="relative overflow-hidden bg-canvas py-20 lg:py-28">
+    <div class="line-grid absolute inset-0 pointer-events-none" aria-hidden="true"></div>
+    <div class="relative mx-auto w-full max-w-[1200px] px-6 lg:px-10">
+      <div class="mb-6 lg:mb-8">
+        <h2 class="section-heading font-bold tracking-[-0.03em] text-onyx leading-[1.05]">
+          Welke <span class="inline-block bg-onyx text-white px-[0.12em] rounded-[0.08em]">technologieën</span>
+        </h2>
+      </div>
+      <div class="grid gap-6 lg:grid-cols-[200px_1fr] lg:gap-16">
+        <div></div>
+        <div class="space-y-4 text-[16px] leading-[1.75] text-onyx/70">
+          <p>
+            Zoals je ziet komt de term "nieuwste technologieën" vaak terug. Misschien vraag
+            je je af wat dat dan precies inhoudt. Het antwoord is: dat verschilt per casus.
+            In het eerste gesprek kijken we samen naar wat er opgelost moet worden, waarna ik
+            onderzoek of er al bestaande oplossingen of methoden zijn die hier echt op
+            aansluiten. Is dat het geval, dan richten we de oplossing daarmee in. Vaak blijken
+            die bestaande methoden echter niet op alle vlakken te passen bij wat er nodig is.
+            In dat geval bouwen we het zelf.
+          </p>
+          <p>
+            Concreet betekent dit dat de gebruikte technologie afhangt van de oplossing. Voor
+            AI-integraties werk ik veelal met n8n of Zapier, waarmee ik bestaande systemen aan
+            elkaar koppel zonder dat er een eigen applicatie nodig is. Voor maatwerktoepassingen
+            bouw ik met Claude Code op een Next.js-framework, gehost via Vercel, met een eigen
+            EU-database zodat data binnen Europa blijft.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA ───────────────────────────────────────────────────────── -->
+  <section class="bg-onyx py-20 lg:py-28">
+    <div class="mx-auto w-full max-w-[1200px] px-6 lg:px-10">
+      <div class="flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
+        <div class="max-w-[46ch]">
+          <h2 class="text-[clamp(1.8rem,3.5vw,2.5rem)] font-bold tracking-[-0.03em] text-white leading-[1.1]">
+            Klinkt <span class="bg-volt text-onyx px-[0.15em] rounded-[0.1em]">interessant?</span>
+          </h2>
+          <p class="mt-5 text-[16px] leading-[1.65] text-white/55">
+            Klinkt dit voor jou interessant, en ben je benieuwd wat voor oplossingen ik
+            jouw bedrijf kan bieden? Neem dan contact met mij op of plan een afspraak in.
+          </p>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-3">
+          <a
+            href="/contact"
+            class="inline-flex items-center justify-center gap-3 rounded-[10px] bg-volt px-6 py-4 text-[15px] font-semibold text-onyx shadow-[0_4px_16px_rgba(185,255,102,0.25)] transition-all hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(185,255,102,0.3)]"
+          >
+            Plan een afspraak
+            <span class="inline-flex h-6 w-6 items-center justify-center rounded-full bg-onyx text-volt" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="7" y1="17" x2="17" y2="7"></line>
+                <polyline points="7 7 17 7 17 17"></polyline>
+              </svg>
+            </span>
+          </a>
+          <a
+            href="mailto:bas@broere.ai"
+            class="inline-flex items-center justify-center gap-2 rounded-[10px] border border-white/15 px-6 py-4 text-[15px] font-semibold text-white/80 transition-all hover:border-white/30 hover:text-white hover:-translate-y-0.5"
+          >
+            bas@broere.ai
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .guides {
+    background-image: repeating-linear-gradient(
+      to right,
+      rgba(25, 26, 35, 0.05) 0px,
+      rgba(25, 26, 35, 0.05) 1px,
+      transparent 1px,
+      transparent 12.5%
+    );
+  }
+
+  .dot-grid {
+    background-image: radial-gradient(circle, rgba(25, 26, 35, 0.09) 1px, transparent 1px);
+    background-size: 28px 28px;
+  }
+
+  .line-grid {
+    background-image:
+      repeating-linear-gradient(to right, rgba(25, 26, 35, 0.05) 0px, rgba(25, 26, 35, 0.05) 1px, transparent 1px, transparent 64px),
+      repeating-linear-gradient(to bottom, rgba(25, 26, 35, 0.05) 0px, rgba(25, 26, 35, 0.05) 1px, transparent 1px, transparent 64px);
+  }
+
+  .page-title {
+    font-size: clamp(3.5rem, 8vw, 6.5rem);
+  }
+
+  .section-heading {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+  }
+</style>

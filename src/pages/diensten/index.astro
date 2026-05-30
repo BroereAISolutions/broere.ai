@@ -1,0 +1,152 @@
+---
+import Layout from "../../layouts/Layout.astro";
+
+const diensten = [
+  {
+    slug: "automations",
+    title: "Automations",
+    description: "Processen automatiseren door workflows te bouwen die repetitief werk voor jou overnemen. Met n8n, Make of custom scripts.",
+    cardBg: "bg-white border border-[#E5E5E5]",
+    highlightBg: "#F3F3F3",
+    titleColor: "#191A23",
+    descColor: "rgba(25,26,35,0.55)",
+    btnBg: "#191A23",
+    btnArrow: "#B9FF66",
+    illustration: `<svg width="180" height="160" viewBox="0 0 180 160" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="20" y="30" width="60" height="40" rx="8" stroke="#191A23" stroke-width="1.5"/><rect x="100" y="30" width="60" height="40" rx="8" stroke="#191A23" stroke-width="1.5"/><rect x="60" y="95" width="60" height="40" rx="8" stroke="#191A23" stroke-width="1.5"/><path d="M80 50 L100 50" stroke="#191A23" stroke-width="1.5" stroke-dasharray="3 3"/><path d="M50 70 Q50 115 60 115" stroke="#191A23" stroke-width="1.5" stroke-dasharray="3 3"/><path d="M130 70 Q130 115 120 115" stroke="#191A23" stroke-width="1.5" stroke-dasharray="3 3"/><circle cx="80" cy="50" r="3" fill="#B9FF66" stroke="#191A23" stroke-width="1"/><circle cx="100" cy="50" r="3" fill="#B9FF66" stroke="#191A23" stroke-width="1"/><path d="M155 15 L157.5 20 L163 18 L159 23 L164 25 L159 27 L163 32 L157.5 30 L155 35 L152.5 30 L147 32 L151 27 L146 25 L151 23 L147 18 L152.5 20 Z" stroke="#191A23" stroke-width="1.2" stroke-linejoin="round"/></svg>`,
+    illustrationOpacity: "opacity-[0.13]",
+  },
+  {
+    slug: "integrations",
+    title: "Integraties",
+    description: "Systemen aan elkaar koppelen zodat data automatisch stroomt. Geen dubbele invoer meer, realtime gesynchroniseerd.",
+    cardBg: "bg-volt",
+    highlightBg: "rgba(255,255,255,0.6)",
+    titleColor: "#191A23",
+    descColor: "rgba(25,26,35,0.6)",
+    btnBg: "#191A23",
+    btnArrow: "#B9FF66",
+    illustration: `<svg width="180" height="160" viewBox="0 0 180 160" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="45" cy="80" r="28" stroke="#191A23" stroke-width="1.5"/><circle cx="135" cy="80" r="28" stroke="#191A23" stroke-width="1.5"/><path d="M73 80 L107 80" stroke="#191A23" stroke-width="1.5" stroke-dasharray="4 3"/><path d="M95 72 L107 80 L95 88" stroke="#191A23" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="45" cy="80" r="10" stroke="#191A23" stroke-width="1.2"/><circle cx="135" cy="80" r="10" stroke="#191A23" stroke-width="1.2"/><path d="M155 20 L157.5 25 L163 23 L159 28 L164 30 L159 32 L163 37 L157.5 35 L155 40 L152.5 35 L147 37 L151 32 L146 30 L151 28 L147 23 L152.5 25 Z" stroke="#191A23" stroke-width="1.2" stroke-linejoin="round"/></svg>`,
+    illustrationOpacity: "opacity-[0.18]",
+  },
+  {
+    slug: "custom-software",
+    title: "Custom Software",
+    description: "Op maat gemaakte tools en dashboards gebouwd met Next.js en Supabase. Precies wat jij nodig hebt, niets meer.",
+    cardBg: "bg-onyx",
+    highlightBg: "rgba(255,255,255,0.1)",
+    titleColor: "#FFFFFF",
+    descColor: "rgba(255,255,255,0.5)",
+    btnBg: "#B9FF66",
+    btnArrow: "#191A23",
+    illustration: `<svg width="180" height="160" viewBox="0 0 180 160" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="15" y="25" width="130" height="95" rx="10" stroke="white" stroke-width="1.5"/><line x1="15" y1="45" x2="145" y2="45" stroke="white" stroke-width="1.5"/><circle cx="28" cy="35" r="4" stroke="white" stroke-width="1.2"/><circle cx="42" cy="35" r="4" stroke="white" stroke-width="1.2"/><circle cx="56" cy="35" r="4" stroke="white" stroke-width="1.2"/><path d="M28 62 L38 72 L28 82" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><line x1="44" y1="82" x2="68" y2="82" stroke="white" stroke-width="1.5" stroke-linecap="round"/><rect x="28" y="95" width="90" height="7" rx="3" stroke="white" stroke-width="1.2"/><rect x="28" y="108" width="55" height="7" rx="3" stroke="white" stroke-width="1.2"/><path d="M155 20 L157.5 25 L163 23 L159 28 L164 30 L159 32 L163 37 L157.5 35 L155 40 L152.5 35 L147 37 L151 32 L146 30 L151 28 L147 23 L152.5 25 Z" stroke="white" stroke-width="1.2" stroke-linejoin="round"/></svg>`,
+    illustrationOpacity: "opacity-[0.15]",
+  },
+  {
+    slug: "ai-solutions",
+    title: "AI Oplossingen",
+    description: "AI geïntegreerd in jouw bedrijfssoftware. Niet als losse bolt-on, maar echt ingebouwd zodat het direct resultaat oplevert.",
+    cardBg: "bg-canvas border border-[#E5E5E5]",
+    highlightBg: "#FFFFFF",
+    titleColor: "#191A23",
+    descColor: "rgba(25,26,35,0.55)",
+    btnBg: "#191A23",
+    btnArrow: "#B9FF66",
+    illustration: `<svg width="180" height="160" viewBox="0 0 180 160" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="90" cy="80" r="22" stroke="#191A23" stroke-width="1.5"/><circle cx="35" cy="45" r="12" stroke="#191A23" stroke-width="1.2"/><circle cx="145" cy="45" r="12" stroke="#191A23" stroke-width="1.2"/><circle cx="35" cy="115" r="12" stroke="#191A23" stroke-width="1.2"/><circle cx="145" cy="115" r="12" stroke="#191A23" stroke-width="1.2"/><path d="M47 50 L68 68" stroke="#191A23" stroke-width="1.2" stroke-dasharray="3 3"/><path d="M133 50 L112 68" stroke="#191A23" stroke-width="1.2" stroke-dasharray="3 3"/><path d="M47 110 L68 92" stroke="#191A23" stroke-width="1.2" stroke-dasharray="3 3"/><path d="M133 110 L112 92" stroke="#191A23" stroke-width="1.2" stroke-dasharray="3 3"/><circle cx="90" cy="80" r="8" fill="#B9FF66" stroke="#191A23" stroke-width="1"/><path d="M155 15 L157.5 20 L163 18 L159 23 L164 25 L159 27 L163 32 L157.5 30 L155 35 L152.5 30 L147 32 L151 27 L146 25 L151 23 L147 18 L152.5 20 Z" stroke="#191A23" stroke-width="1.2" stroke-linejoin="round"/></svg>`,
+    illustrationOpacity: "opacity-[0.12]",
+  },
+];
+---
+
+<Layout
+  title="Diensten — Broere AI Solutions"
+  description="Workflow automatisering, systeem integraties, maatwerk software en AI-oplossingen voor MKB. Concrete quick wins die direct resultaat opleveren."
+>
+  <div class="bg-canvas">
+    <div class="mx-auto w-full max-w-[1200px] px-6 lg:px-10 pt-14 lg:pt-20 pb-24 lg:pb-32">
+
+      <!-- Header -->
+      <div class="flex flex-col sm:flex-row sm:items-start sm:gap-10 mb-14 lg:mb-16">
+        <div class="flex-none">
+          <span class="inline-block bg-volt text-onyx font-bold text-[clamp(1.05rem,2vw,1.3rem)] tracking-[-0.02em] px-3 py-1.5 rounded-[6px]">
+            Diensten
+          </span>
+        </div>
+        <p class="mt-4 sm:mt-1.5 text-[15px] leading-[1.65] text-onyx/55 max-w-[44ch]">
+          Vier kerngebieden waar ik MKB-bedrijven mee help. Gericht op tijd terugwinnen en slimmer werken.
+        </p>
+      </div>
+
+      <!-- Cards 2×2 grid -->
+      <div class="grid gap-5 sm:grid-cols-2">
+        {diensten.map((dienst) => (
+          <a
+            href={`/diensten/${dienst.slug}`}
+            class={`group relative overflow-hidden rounded-[20px] p-8 lg:p-10 flex flex-col min-h-[280px] lg:min-h-[300px] ${dienst.cardBg} transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_40px_rgba(25,26,35,0.12)]`}
+          >
+            <!-- Decorative illustration right side -->
+            <div
+              class={`absolute right-0 top-0 bottom-0 w-[55%] flex items-center justify-center pointer-events-none select-none ${dienst.illustrationOpacity}`}
+              aria-hidden="true"
+            >
+              <Fragment set:html={dienst.illustration} />
+            </div>
+
+            <!-- Content -->
+            <div class="relative z-10 flex flex-col flex-1 max-w-[58%]">
+              <h2
+                class="font-bold text-[clamp(1.2rem,2.2vw,1.55rem)] tracking-[-0.03em] leading-[1.2] rounded-[5px] px-[0.3em] py-[0.15em] -mx-[0.3em] box-decoration-clone"
+                style={`color: ${dienst.titleColor}; background-color: ${dienst.highlightBg};`}
+              >
+                {dienst.title}
+              </h2>
+
+              <p
+                class="mt-4 text-[14px] leading-[1.65] flex-1"
+                style={`color: ${dienst.descColor};`}
+              >
+                {dienst.description}
+              </p>
+
+              <!-- Lees meer -->
+              <div class="mt-8 flex items-center gap-3">
+                <span
+                  class="flex h-9 w-9 flex-none items-center justify-center rounded-full transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                  style={`background-color: ${dienst.btnBg};`}
+                  aria-hidden="true"
+                >
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke={dienst.btnArrow} stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="7" y1="17" x2="17" y2="7"/>
+                    <polyline points="7 7 17 7 17 17"/>
+                  </svg>
+                </span>
+                <span
+                  class="text-[14px] font-semibold"
+                  style={`color: ${dienst.descColor};`}
+                >
+                  Lees meer
+                </span>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+
+      <!-- CTA -->
+      <div class="mt-14 flex justify-center">
+        <a
+          href="/contact"
+          class="inline-flex items-center gap-3 bg-onyx text-white font-semibold text-[15px] px-7 py-4 rounded-[10px] hover:shadow-[0_6px_20px_rgba(25,26,35,0.22)] hover:-translate-y-px transition-all duration-200"
+        >
+          Plan een gesprek
+          <span class="flex h-6 w-6 items-center justify-center rounded-full bg-volt">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#191A23" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="7" y1="17" x2="17" y2="7"/>
+              <polyline points="7 7 17 7 17 17"/>
+            </svg>
+          </span>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</Layout>

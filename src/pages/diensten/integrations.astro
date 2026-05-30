@@ -1,0 +1,258 @@
+---
+import Layout from "../../layouts/Layout.astro";
+
+const resultaten = [
+  {
+    title: "Één bron van waarheid",
+    description: "Data staat niet meer verspreid over vijf tools. Alles wordt gesynchroniseerd naar de juiste plek.",
+  },
+  {
+    title: "Geen dubbele invoer",
+    description: "Wat je in één systeem invoert, verschijnt automatisch in alle andere systemen die het nodig hebben.",
+  },
+  {
+    title: "Realtime synchronisatie",
+    description: "Geen dagelijkse exports en imports. Data stroomt direct wanneer er iets verandert.",
+  },
+  {
+    title: "Minder kans op fouten",
+    description: "Handmatig kopiëren leidt tot fouten. Automatische koppelingen niet.",
+  },
+];
+
+const useCases = [
+  {
+    trigger: "Je werkt met meerdere tools die niets van elkaar weten",
+    example: "CRM, boekhoudpakket en e-mailplatform die allemaal los van elkaar staan.",
+  },
+  {
+    trigger: "Data invoer je meerdere keren in verschillende systemen",
+    example: "Een nieuwe klant aanmaken in je CRM, boekhouding én project-tool — apart, voor elke tool.",
+  },
+  {
+    trigger: "Klantdata staat verspreid en is altijd ergens verouderd",
+    example: "Je weet nooit zeker of het contactpersoon in tool A hetzelfde is als in tool B.",
+  },
+  {
+    trigger: "Je wil je eigen systemen koppelen aan externe platformen",
+    example: "Orders uit een webshop automatisch in je voorraad- of boekhoudsysteem verwerken.",
+  },
+];
+
+const stappen = [
+  {
+    nr: "01",
+    titel: "Systemen en datastromen in kaart",
+    tekst: "We inventariseren welke tools je gebruikt, welke data erin zit en hoe die nu van A naar B gaat.",
+  },
+  {
+    nr: "02",
+    titel: "Koppeling ontwerpen",
+    tekst: "Ik ontwerp de integratie: welke data stroomt waarheen, op welk moment, en wat gebeurt er bij fouten.",
+  },
+  {
+    nr: "03",
+    titel: "Bouwen en testen",
+    tekst: "De koppeling wordt gebouwd en getest met echte data. Inclusief foutafhandeling en logging.",
+  },
+  {
+    nr: "04",
+    titel: "Live met monitoring",
+    tekst: "Na go-live monitor ik de integratie en zorg ik dat edge-cases goed worden afgehandeld.",
+  },
+];
+
+const tools = ["REST APIs", "GraphQL", "Webhooks", "n8n", "Make", "Zapier", "Python", "OAuth 2.0"];
+---
+
+<Layout
+  title="Systeem Integraties & API Koppelingen voor MKB — Broere AI Solutions"
+  description="Jouw tools aan elkaar koppelen zodat data automatisch stroomt. Geen dubbele invoer, realtime synchronisatie tussen CRM, boekhouding, webshop en meer."
+>
+  <!-- Hero -->
+  <section class="bg-canvas relative overflow-hidden">
+    <div class="dot-grid absolute inset-0 pointer-events-none" aria-hidden="true"></div>
+    <div class="relative mx-auto w-full max-w-[1200px] px-6 lg:px-10 pt-10 lg:pt-14 pb-16 lg:pb-24">
+      <a
+        href="/diensten"
+        class="inline-flex items-center gap-2 text-[13px] font-medium text-onyx/45 hover:text-onyx transition-colors"
+      >
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="19" y1="12" x2="5" y2="12"></line>
+          <polyline points="12 19 5 12 12 5"></polyline>
+        </svg>
+        Alle diensten
+      </a>
+
+      <div class="mt-8">
+        <span class="font-sans font-medium text-[11px] uppercase tracking-[0.06em] text-onyx/40">Dienst · 02</span>
+        <h1 class="mt-4 font-bold tracking-[-0.04em] leading-[0.93] page-title text-onyx">
+          <span class="inline-block bg-volt px-[0.12em] rounded-[0.1em]">Integrations</span>
+        </h1>
+        <p class="mt-6 max-w-[42ch] text-[clamp(1.05rem,1.8vw,1.25rem)] font-semibold tracking-[-0.02em] leading-[1.35] text-onyx">
+          Jouw tools praten nog niet met elkaar. Dat los ik op.
+        </p>
+        <p class="mt-4 max-w-[46ch] text-[15px] leading-[1.65] text-onyx/55">
+          Via APIs en webhooks zorg ik dat data automatisch stroomt tussen jouw systemen. Geen handmatig kopiëren, geen verouderde data.
+        </p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a
+            href="/contact"
+            class="inline-flex items-center gap-3 rounded-[10px] bg-onyx px-5 py-3.5 text-[14px] font-semibold text-white shadow-[0_4px_16px_rgba(25,26,35,0.14)] transition-all hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(25,26,35,0.2)]"
+          >
+            Plan een gesprek
+            <span class="inline-flex h-5 w-5 items-center justify-center rounded-full bg-volt text-onyx" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="7" y1="17" x2="17" y2="7"></line>
+                <polyline points="7 7 17 7 17 17"></polyline>
+              </svg>
+            </span>
+          </a>
+          <a
+            href="/projecten"
+            class="inline-flex items-center gap-2 rounded-[10px] border border-onyx/15 px-5 py-3.5 text-[14px] font-semibold text-onyx/70 transition-all hover:border-onyx/30 hover:text-onyx hover:-translate-y-0.5"
+          >
+            Bekijk projecten
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Wat je krijgt -->
+  <section class="bg-white py-20 lg:py-28">
+    <div class="mx-auto w-full max-w-[1200px] px-6 lg:px-10">
+      <h2 class="section-heading font-bold tracking-[-0.03em] text-onyx leading-[1.05]">
+        Wat je <span class="inline-block bg-volt px-[0.12em] rounded-[0.08em]">krijgt</span>
+      </h2>
+      <div class="mt-12 lg:mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        {resultaten.map((item) => (
+          <div class="rounded-2xl border border-[#E5E5E5] bg-canvas/60 p-6">
+            <span class="block w-2 h-2 rounded-full bg-volt mb-4"></span>
+            <h3 class="font-semibold text-[16px] tracking-[-0.02em] text-onyx leading-[1.2]">
+              {item.title}
+            </h3>
+            <p class="mt-3 text-[14px] leading-[1.6] text-onyx/55">
+              {item.description}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Wanneer heb je dit nodig -->
+  <section class="bg-canvas relative overflow-hidden py-20 lg:py-28">
+    <div class="line-grid absolute inset-0 pointer-events-none" aria-hidden="true"></div>
+    <div class="relative mx-auto w-full max-w-[1200px] px-6 lg:px-10">
+      <h2 class="section-heading font-bold tracking-[-0.03em] text-onyx leading-[1.05]">
+        Wanneer heb je <span class="inline-block bg-onyx text-white px-[0.12em] rounded-[0.08em]">dit nodig?</span>
+      </h2>
+      <div class="mt-12 lg:mt-16 grid gap-5 lg:grid-cols-2">
+        {useCases.map((item) => (
+          <div class="rounded-2xl bg-white border border-[#E5E5E5] p-7">
+            <p class="font-semibold text-[16px] tracking-[-0.02em] text-onyx leading-[1.3]">
+              {item.trigger}
+            </p>
+            <p class="mt-3 text-[14px] leading-[1.6] text-onyx/55 italic">
+              Voorbeeld: {item.example}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Hoe ik het aanpak -->
+  <section class="bg-white py-20 lg:py-28">
+    <div class="mx-auto w-full max-w-[1200px] px-6 lg:px-10">
+      <h2 class="section-heading font-bold tracking-[-0.03em] text-onyx leading-[1.05]">
+        Hoe ik het <span class="inline-block bg-volt px-[0.12em] rounded-[0.08em]">aanpak</span>
+      </h2>
+      <div class="mt-12 lg:mt-16 grid gap-0">
+        {stappen.map((stap, i) => (
+          <div class={`flex gap-6 lg:gap-10 py-8 ${i < stappen.length - 1 ? "border-b border-[#E5E5E5]" : ""}`}>
+            <span class="font-mono text-[13px] tracking-[0.1em] text-onyx/25 flex-none pt-1">{stap.nr}</span>
+            <div>
+              <h3 class="font-semibold text-[18px] tracking-[-0.025em] text-onyx">{stap.titel}</h3>
+              <p class="mt-2 text-[15px] leading-[1.65] text-onyx/55 max-w-[52ch]">{stap.tekst}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- Tools -->
+      <div class="mt-16 pt-10 border-t border-[#E5E5E5]">
+        <span class="font-sans font-medium text-[11px] uppercase tracking-[0.06em] text-onyx/35">Tools & technologie</span>
+        <div class="mt-4 flex flex-wrap gap-2">
+          {tools.map((tool) => (
+            <span class="rounded-md border border-onyx/10 bg-canvas px-3 py-1.5 text-[12px] font-mono text-onyx/60">
+              {tool}
+            </span>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="bg-onyx py-20 lg:py-28">
+    <div class="mx-auto w-full max-w-[1200px] px-6 lg:px-10">
+      <div class="flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
+        <div class="max-w-[46ch]">
+          <h2 class="cta-title font-bold tracking-[-0.03em] text-white leading-[1.1]">
+            Systemen die <span class="bg-volt text-onyx px-[0.15em] rounded-[0.1em]">samenwerken.</span>
+          </h2>
+          <p class="mt-5 text-[16px] leading-[1.65] text-white/55">
+            Plan een vrijblijvend gesprek. We bespreken welke systemen je gebruikt en hoe ik ze voor je aan elkaar knoop.
+          </p>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-3">
+          <a
+            href="/contact"
+            class="inline-flex items-center justify-center gap-3 rounded-[10px] bg-volt px-6 py-4 text-[15px] font-semibold text-onyx shadow-[0_4px_16px_rgba(185,255,102,0.25)] transition-all hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(185,255,102,0.3)]"
+          >
+            Plan een afspraak
+            <span class="inline-flex h-6 w-6 items-center justify-center rounded-full bg-onyx text-volt" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="7" y1="17" x2="17" y2="7"></line>
+                <polyline points="7 7 17 7 17 17"></polyline>
+              </svg>
+            </span>
+          </a>
+          <a
+            href="mailto:bas@broere.ai"
+            class="inline-flex items-center justify-center gap-2 rounded-[10px] border border-white/15 px-6 py-4 text-[15px] font-semibold text-white/80 transition-all hover:border-white/30 hover:text-white hover:-translate-y-0.5"
+          >
+            bas@broere.ai
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .dot-grid {
+    background-image: radial-gradient(circle, rgba(25, 26, 35, 0.07) 1px, transparent 1px);
+    background-size: 28px 28px;
+  }
+
+  .line-grid {
+    background-image:
+      repeating-linear-gradient(to right, rgba(25, 26, 35, 0.05) 0px, rgba(25, 26, 35, 0.05) 1px, transparent 1px, transparent 64px),
+      repeating-linear-gradient(to bottom, rgba(25, 26, 35, 0.05) 0px, rgba(25, 26, 35, 0.05) 1px, transparent 1px, transparent 64px);
+  }
+
+  .page-title {
+    font-size: clamp(3rem, 8vw, 6.5rem);
+  }
+
+  .section-heading {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+  }
+
+  .cta-title {
+    font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+  }
+</style>
