@@ -1,0 +1,168 @@
+---
+import { getCollection, render, type CollectionEntry } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+
+export async function getStaticPaths() {
+  const entries = await getCollection("diensten", ({ data }) => !data.draft);
+  return entries.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+type Props = { entry: CollectionEntry<"diensten"> };
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const { data } = entry;
+---
+
+<Layout
+  title={`${data.title} — Broere AI Solutions`}
+  description={data.intro}
+>
+  <div class="bg-canvas">
+    <div class="mx-auto w-full max-w-[760px] px-6 lg:px-10 pt-10 lg:pt-14 pb-24 lg:pb-32">
+
+      <a href="/diensten" class="inline-flex items-center gap-2 text-[13px] font-medium text-onyx/45 hover:text-onyx transition-colors">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/>
+        </svg>
+        Alle diensten
+      </a>
+
+      <!-- Hero -->
+      <div class="mt-10 pb-10 border-b border-[#E5E5E5]">
+        <h1 class="font-bold tracking-[-0.03em] leading-[1.05] hero-title text-onyx">
+          {data.title}
+        </h1>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href="/contact" class="inline-flex items-center gap-3 rounded-[10px] bg-onyx px-5 py-3.5 text-[14px] font-semibold text-white shadow-[0_4px_16px_rgba(25,26,35,0.14)] transition-all hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(25,26,35,0.2)]">
+            Plan een gesprek
+            <span class="inline-flex h-5 w-5 items-center justify-center rounded-full bg-volt text-onyx" aria-hidden="true">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+            </span>
+          </a>
+          <a href="/projecten" class="inline-flex items-center gap-2 rounded-[10px] border border-onyx/15 px-5 py-3.5 text-[14px] font-semibold text-onyx/70 transition-all hover:border-onyx/30 hover:text-onyx hover:-translate-y-0.5">
+            Bekijk projecten
+          </a>
+        </div>
+      </div>
+
+      <!-- Markdown body -->
+      <div class="pt-10 prose-light">
+        <Content />
+      </div>
+
+      <!-- Tools -->
+      {data.tools.length > 0 && (
+        <div class="mt-10 pt-10 border-t border-[#E5E5E5]">
+          <span class="font-mono text-[11px] uppercase tracking-[0.18em] text-onyx/35">Tools</span>
+          <div class="mt-4 flex flex-wrap gap-2">
+            {data.tools.map((tool) => (
+              <span class="rounded-md border border-onyx/10 bg-white px-3 py-1.5 text-[12px] font-mono text-onyx/55">{tool}</span>
+            ))}
+          </div>
+        </div>
+      )}
+
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <section class="bg-onyx py-20 lg:py-28">
+    <div class="mx-auto w-full max-w-[1200px] px-6 lg:px-10 flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
+      <div class="max-w-[46ch]">
+        <h2 class="cta-title font-bold tracking-[-0.03em] text-white leading-[1.1]">
+          Klinkt dit als <span class="bg-volt text-onyx px-[0.15em] rounded-[0.1em]">wat je zoekt?</span>
+        </h2>
+        <p class="mt-4 text-[16px] leading-[1.65] text-white/55">
+          Plan een vrijblijvend gesprek. We bespreken je situatie en kijken wat er mogelijk is.
+        </p>
+      </div>
+      <div class="flex flex-col sm:flex-row gap-3">
+        <a href="/contact" class="inline-flex items-center justify-center gap-3 rounded-[10px] bg-volt px-6 py-4 text-[15px] font-semibold text-onyx transition-all hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(185,255,102,0.3)]">
+          Plan een afspraak
+          <span class="inline-flex h-6 w-6 items-center justify-center rounded-full bg-onyx text-volt" aria-hidden="true">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+          </span>
+        </a>
+        <a href="mailto:bas@broere.ai" class="inline-flex items-center justify-center gap-2 rounded-[10px] border border-white/15 px-6 py-4 text-[15px] font-semibold text-white/80 transition-all hover:border-white/30 hover:text-white hover:-translate-y-0.5">
+          bas@broere.ai
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .hero-title { font-size: clamp(2.5rem, 6vw, 5rem); }
+  .cta-title  { font-size: clamp(1.8rem, 3.5vw, 2.5rem); }
+
+  .prose-light :global(h2) {
+    font-size: clamp(1.25rem, 2vw, 1.5rem);
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    line-height: 1.2;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    color: #191A23;
+  }
+
+  .prose-light :global(h2:first-child) {
+    margin-top: 0;
+  }
+
+  .prose-light :global(p) {
+    font-size: 15px;
+    line-height: 1.7;
+    color: rgba(25, 26, 35, 0.6);
+    margin-bottom: 1rem;
+  }
+
+  .prose-light :global(strong) {
+    color: #191A23;
+    font-weight: 600;
+  }
+
+  .prose-light :global(ul) {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.5rem 0;
+  }
+
+  .prose-light :global(ul li) {
+    position: relative;
+    padding-left: 1.25rem;
+    font-size: 15px;
+    line-height: 1.65;
+    color: rgba(25, 26, 35, 0.6);
+    margin-bottom: 0.4rem;
+  }
+
+  .prose-light :global(ul li::before) {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.6em;
+    width: 6px;
+    height: 6px;
+    border-radius: 999px;
+    background-color: #B9FF66;
+  }
+
+  .prose-light :global(a) {
+    color: #191A23;
+    text-decoration: underline;
+    text-decoration-color: #B9FF66;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 3px;
+  }
+
+  .prose-light :global(blockquote) {
+    border-left: 3px solid #B9FF66;
+    padding-left: 1.25rem;
+    margin: 1.5rem 0;
+    color: rgba(25, 26, 35, 0.7);
+    font-style: italic;
+  }
+</style>

@@ -49,4 +49,17 @@ const projecten = defineCollection({
   }),
 });
 
-export const collections = { projecten };
+const diensten = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "./src/content/diensten" }),
+  schema: z.object({
+    title: z.string(),
+    tagline: z.string(),
+    intro: z.string(),
+    nr: z.number().int(),
+    tools: z.array(z.string()).default([]),
+    order: z.number().int().default(0),
+    draft: z.boolean().default(false),
+  }),
+});
+
+export const collections = { projecten, diensten };

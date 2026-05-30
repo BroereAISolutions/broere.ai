@@ -10,31 +10,27 @@ stack:
   - "Next.js"
   - "Supabase"
   - "Resend"
-client: "Intern project"
+client: "Extern project"
 role: "Concept, design en development"
 problem: >
-  Feedback kwam binnen via mail, WhatsApp, een formulier op de site en mondeling
-  tijdens calls. Niemand had het overzicht en goede ideeën zakten weg in de drukte.
+  Het eerdere feedback platform was te complex en werden te weinig functies daadwerkelijk van gebruikt door de medewerkers. Hierdoor is besloten niet meer door te gaan met dit platform, waardoor er geen platform meer is binnen de organisatie om feedback in te geven en gesprekken in te voeren
 solution: >
-  Eén plek waar alle feedback samenkomt: van klanten, van het team, vanuit de
-  tools zelf. Met tagging, prioriteit en automatische toewijzing aan de juiste
-  persoon.
+  Een simpel en gebruiksvriendelijk platform waarin medewerkers gemakkelijk peer-feedback kunnen geven en functioneringsgesprekken in kunnen voorbereiden, inzien en houden.
 metrics:
   - label: "Feedback-kanalen gebundeld"
-    value: "5"
+    value: "3"
   - label: "Response-tijd"
-    value: "-60%"
+    value: "-30%"
 gallery: []
 ---
 
 ## Hoe het werkt
 
-- **Inbox** met alle feedback, gefilterd per status, type of klant.
-- **Automatische tagging** met AI: bug, feature-request, vraag of klacht.
-- **Auto-routing** naar de juiste persoon op basis van tags.
-- **Reply-flow** met templates, zodat reageren in een paar klikken kan.
+- **Feedbackdossier** met alle ontvangen feedback uit de verschillende gesprekken en peer-feedback
+- **Aanvragen peer-feedback** Vraag feedback aan van andere teams
+- **Customizable** Maak eigen feedback templates die de medewerkers kunnen gebruiken
+- **Gesprekken** kunnen worden uitgevoerd via het platform
 
 ## Wat het oplevert
 
-Feedback verdwijnt niet meer in een mailbox. Klanten krijgen sneller antwoord en het
-team weet altijd wat er speelt, zonder steeds te hoeven graven in losse threads.
+Feedback verdwijnt niet meer in een mailbox. Maar is vanaf nu gebundeld in één centraal platform waarin zowel medewerker als beheerder bij kan.

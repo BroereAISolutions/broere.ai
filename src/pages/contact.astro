@@ -1,0 +1,134 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout
+  title="Contact — Broere AI Solutions"
+  description="Plan een vrijblijvend kennismakingsgesprek. We bespreken je uitdaging en kijken samen wat er mogelijk is."
+>
+  <div class="relative">
+    <div class="guides absolute inset-0 pointer-events-none" aria-hidden="true"></div>
+  <div class="relative mx-auto w-full max-w-[1200px] px-6 lg:px-10 pt-16 lg:pt-24 pb-24 lg:pb-32">
+
+    <!-- Header -->
+    <div class="mb-12 lg:mb-16 flex items-center gap-36">
+      <div>
+        <div class="inline-flex items-center gap-2 font-sans font-medium text-[11px] uppercase tracking-[0.06em] text-onyx/40 mb-5">
+          <span class="h-1.5 w-1.5 rounded-full bg-volt" aria-hidden="true"></span>
+          Contact
+        </div>
+        <h1 class="font-bold tracking-[-0.035em] leading-[1.05] page-title text-onyx">
+          Heb je iets wat<br /><span class="inline-block bg-volt px-2 rounded-[5px]">slimmer kan?</span>
+        </h1>
+        <p class="mt-5 text-[16px] leading-[1.65] text-onyx/55 max-w-[44ch]">
+          Plan een vrijblijvend kennismakingsgesprek van 30 minuten. We bespreken je uitdaging en kijken samen wat er mogelijk is.
+        </p>
+      </div>
+
+      <img
+        src="/images/personal/personal-dark-background.png"
+        alt="Bas Broere"
+        class="hidden sm:block w-36 h-36 lg:w-52 lg:h-52 rounded-full object-cover object-top shrink-0 shadow-[0_4px_20px_rgba(25,26,35,0.12)]"
+      />
+    </div>
+
+    <!-- Two-column layout: Calendly left, info right -->
+    <div class="grid lg:grid-cols-[1fr_340px] gap-10 lg:gap-16 items-start">
+
+      <!-- Calendly embed -->
+      <div class="calendly-wrap rounded-[14px] overflow-hidden border border-onyx/8 shadow-[0_8px_32px_rgba(25,26,35,0.07)]">
+        <div
+          class="calendly-inline-widget"
+          data-url="https://calendly.com/bas-broere/30min?hide_event_type_details=1&hide_gdpr_banner=1&primary_color=05a505"
+          style="min-width:320px;height:700px;"
+        ></div>
+        <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+      </div>
+
+      <!-- Contact info -->
+      <div class="flex flex-col gap-8 lg:pt-2">
+
+        <div>
+          <p class="font-sans font-medium text-[11px] uppercase tracking-[0.06em] text-onyx/40 mb-3">Liever mailen?</p>
+          <a
+            href="mailto:bas@broere.ai"
+            class="text-[18px] font-semibold text-onyx hover:text-volt transition-colors duration-200"
+          >
+            bas@broere.ai
+          </a>
+        </div>
+
+        <div class="h-px bg-onyx/8"></div>
+
+        <div>
+          <p class="font-sans font-medium text-[11px] uppercase tracking-[0.06em] text-onyx/40 mb-4">Wat je kunt verwachten</p>
+          <ul class="flex flex-col gap-3 text-[15px] text-onyx/65 leading-[1.6]">
+            <li class="flex gap-3">
+              <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-volt"></span>
+              Gesprek duurt 30 minuten
+            </li>
+            <li class="flex gap-3">
+              <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-volt"></span>
+              Geen verkooppraatje, gewoon eerlijk advies
+            </li>
+            <li class="flex gap-3">
+              <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-volt"></span>
+              Binnen twee dagen een voorstel als er een match is
+            </li>
+          </ul>
+        </div>
+
+        <div class="h-px bg-onyx/8"></div>
+
+        <div>
+          <p class="font-sans font-medium text-[11px] uppercase tracking-[0.06em] text-onyx/40 mb-4">Volg me</p>
+          <div class="flex gap-4">
+            <a
+              href="https://linkedin.com/in/basbroere"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 text-[14px] font-medium text-onyx/60 hover:text-onyx transition-colors"
+            >
+              LinkedIn
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/>
+              </svg>
+            </a>
+            <a
+              href="https://github.com/basbroere"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 text-[14px] font-medium text-onyx/60 hover:text-onyx transition-colors"
+            >
+              GitHub
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  </div>
+</Layout>
+
+<style>
+  .guides {
+    background-image: linear-gradient(
+      to right,
+      rgba(25, 26, 35, 0.04) 1px,
+      transparent 1px
+    );
+    background-size: 12.5% 100%;
+  }
+
+  .page-title {
+    font-size: clamp(2.8rem, 7vw, 5.5rem);
+  }
+
+  .calendly-wrap :global(.calendly-inline-widget) {
+    border-radius: 14px;
+  }
+</style>
