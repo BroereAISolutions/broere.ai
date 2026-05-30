@@ -1,6 +1,20 @@
 ---
 import Layout from "../layouts/Layout.astro";
 
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Bas Broere",
+  url: "https://broere.ai/over",
+  jobTitle: "Oprichter & ontwikkelaar",
+  worksFor: {
+    "@type": "Organization",
+    name: "Broere AI Solutions",
+    url: "https://broere.ai",
+  },
+  knowsAbout: ["AI", "Automatisering", "Next.js", "Supabase", "n8n", "Make", "TypeScript"],
+};
+
 const techStack = [
   { label: "Next.js" },
   { label: "React" },
@@ -20,6 +34,7 @@ const techStack = [
 <Layout
   title="Over — Broere AI Solutions"
   description="Ik ben Bas Broere, 22 jaar, en help MKB-bedrijven met AI, automatiseringen en maatwerk software die concreet resultaat opleveren."
+  schema={personSchema}
 >
   <!-- ── Split hero ─────────────────────────────────────────────────── -->
   <section class="grid lg:grid-cols-2 min-h-[92vh]">

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://broere.ai/sitemap-index.xml

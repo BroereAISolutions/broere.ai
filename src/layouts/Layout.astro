@@ -7,14 +7,37 @@ import CookieBanner from "../components/CookieBanner.astro";
 interface Props {
   title?: string;
   description?: string;
+  image?: string;
+  schema?: object;
 }
 
 const {
-  title = "Broere AI Solutions — Maatwerk software, automatiseringen en AI voor MKB",
-  description = "Mini SaaS-tools, automatiseringen en maatwerk software die je business concreet vooruit helpen. Geen hype, gewoon quick wins die werken.",
+  title = "Automatiseringen en maatwerk software | Broere AI Solutions",
+  description = "Broere AI Solutions maakt bedrijven efficiënter met AI, automatiseringen en maatwerk software. Geen hype, gewoon quick wins die werken.",
+  image = "/images/og-default.png",
+  schema,
 } = Astro.props;
 
 const canonical = new URL(Astro.url.pathname, Astro.site ?? "https://broere.ai").toString();
+const ogImage = new URL(image, Astro.site ?? "https://broere.ai").toString();
+
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "Broere AI Solutions",
+  url: "https://broere.ai",
+  logo: "https://broere.ai/favicon.svg",
+  email: "bas@broere.ai",
+  founder: {
+    "@type": "Person",
+    name: "Bas Broere",
+    url: "https://broere.ai/over",
+  },
+  description:
+    "Broere AI Solutions helpt MKB-bedrijven met AI-integraties, automatiseringen en maatwerk software. Snel concreet resultaat zonder grote trajecten.",
+  areaServed: "NL",
+  knowsAbout: ["AI", "Automatisering", "Maatwerk software", "Next.js", "Supabase", "n8n"],
+};
 ---
 
 <!doctype html>
@@ -35,10 +58,18 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? "https://broere.ai")
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:locale" content="nl_NL" />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={title} />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
+    {schema && <script type="application/ld+json" set:html={JSON.stringify(schema)} />}
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
