@@ -81,31 +81,7 @@ import Layout from "../layouts/Layout.astro";
         <div class="h-px bg-onyx/8"></div>
 
         <div>
-          <p class="font-sans font-medium text-[11px] uppercase tracking-[0.06em] text-onyx/40 mb-4">Volg me</p>
-          <div class="flex gap-4">
-            <a
-              href="https://linkedin.com/in/basbroere"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="inline-flex items-center gap-2 text-[14px] font-medium text-onyx/60 hover:text-onyx transition-colors"
-            >
-              LinkedIn
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/>
-              </svg>
-            </a>
-            <a
-              href="https://github.com/basbroere"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="inline-flex items-center gap-2 text-[14px] font-medium text-onyx/60 hover:text-onyx transition-colors"
-            >
-              GitHub
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/>
-              </svg>
-            </a>
-          </div>
+          <div class="badge-base LI-profile-badge" data-locale="nl_NL" data-size="medium" data-theme="light" data-type="HORIZONTAL" data-vanity="bas-broere-868764138" data-version="v1"></div>
         </div>
 
       </div>
@@ -132,3 +108,5 @@ import Layout from "../layouts/Layout.astro";
     border-radius: 14px;
   }
 </style>
+
+<script src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
